@@ -13,8 +13,11 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 import userRouter from './routes/user.routes.js';
+import formRouter from './routes/form.routes.js';
 
 app.use("/api/v1/users",userRouter);
+app.use("/api/v1/form",formRouter);
+
 
 
 export{app};

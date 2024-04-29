@@ -17,6 +17,10 @@ const formSchema = new Schema(
             birthTime: {
                         type: String,
                         required: true},
+            contact:{ 
+                      type:Number,
+                      required:true,
+                      unique:true},
             birthPlace: { type: String, 
                         required: true },
             nativePlace: { type: String,
@@ -130,18 +134,18 @@ const formSchema = new Schema(
             }
           },
           professionalDetails: {
-            type: { type: String, required: true }, // "Service" or "Business"
+            professionType: { type: String, required: true }, // "Service" or "Business"
             serviceName: {type: String},
             serviceAddress:{type: String},
             serviceDesignation: String,
-            serviceSalary: {type: Number},
+            serviceSalary: {type: String},
             businessName: {type: String},
             businessAddress: {type: String},
             businessDesignation: {type: String},
-            businessIncome: {type: Number},
+            businessIncome: {type: String},
           },
           educationDetails:{
-            type:{type:String,required:true},
+            educationType:{type:String,required:true},
             tenthSchoolName:{type:String},
             tenthMarks:{type:Number},
             diplomaCollegeName:{type:String},
@@ -163,27 +167,27 @@ const formSchema = new Schema(
             phdMarks:{type:Number}
           },
           fatherDetails: {
-            firstName: { type: String, required: true },
-            middleName: {type: String},
-            lastName: { type: String, required: true },
-            status: { type: String, required: true ,enum: ['alive', 'expired']}, // "alive" or "expired"
-            contact: {type: Number}, 
-            profession:{type:String,
+            fatherFirstName: { type: String, required: true },
+            fatherMiddleName: {type: String},
+            fatherLastName: { type: String, required: true },
+            fatherStatus: { type: String, required: true ,enum: ['alive', 'expired']}, // "alive" or "expired"
+            fatherContact: {type: Number}, 
+            fatherProfession:{type:String,
                         enum:['Service','Business','Retired'],},
-            aliveFields:{
+            fatherAliveFields:{
                         contact: { type: String },
                         profession: { type: String, enum: ['Service', 'Business', 'Retired'] }
                       }
           },
           motherDetails: {
-            firstName: { type: String, required: true },
-            lastName: { type: String, required: true },
-            status: { type: String, required: true,enum: ['alive', 'expired'] },
+            motherFirstName: { type: String, required: true },
+            motherLastName: { type: String, required: true },
+            motherStatus: { type: String, required: true,enum: ['alive', 'expired'] },
                      // "alive" or "expired"
-            contact: {type: Number},
-            profession: {type:String,
+            motherContact: {type: Number},
+            motherProfession: {type:String,
                         enum:['Service','Business','Retired','House Wife'],},
-            aliveFields: {
+            motherAliveFields: {
                           contact: { type: String },
                           profession: { type: String, enum: ['Service', 'Business', 'Retired', 'House Wife'] }
                       }
@@ -191,33 +195,58 @@ const formSchema = new Schema(
           maternalSurname: {
             surName: { type: String, required: true },
           },
-          relativesSurname: [
+          relativesSurname: 
             {
-              type:String
-            }
-          ],
-          elderSiblings: [
-            {
-              firstName: { type: String},
-              lastName: { type: String},
-              maritalStatus: { type: String,
+              surName1:{type:String},
+              surName2:{type:String},
+              surName3:{type:String}
+            },
+          elderSiblings: {
+           elderSiblingOne: {
+            elderSiblingOneFirstName: { type: String},
+            elderSiblingOneLastName: { type: String},
+            elderSiblingOneMaritalStatus: { type: String,
                               enum:['Single','Widow','Widower','Divorce',''] },
-            }
-          ],
-          youngerSiblings: [
-            {
-              firstName: { type: String},
-              lastName: { type: String},
-              maritalStatus: { type: String,
+            },
+            elderSiblingTwo: {
+              elderSiblingTwoFirstName: { type: String},
+              elderSiblingTwoLastName: { type: String},
+              elderSiblingTwoMaritalStatus: { type: String,
+                              enum:['Single','Widow','Widower','Divorce',''] },
+            },
+            elderSiblingThree: {
+              elderSiblingThreeFirstName: { type: String},
+              elderSiblingThreeLastName: { type: String},
+              elderSiblingThreeMaritalStatus: { type: String,
+                              enum:['Single','Widow','Widower','Divorce',''] },
+            },
+          },
+          youngerSiblings: {
+            youngerSiblingOne:{
+              youngerSiblingOneFirstName: { type: String},
+              youngerSiblingOneLastName: { type: String},
+              youngerSiblingOneMaritalStatus: { type: String,
+                              enum:['Single','Widow','Widower','Divorce','']},
+            },
+            youngerSiblingTwo:{
+              youngerSiblingTwoFirstName: { type: String},
+              youngerSiblingTwoLastName: { type: String},
+              youngerSiblingTwoMaritalStatus: { type: String,
+                              enum:['Single','Widow','Widower','Divorce','']},
+            },
+            youngerSiblingThree:{
+              youngerSiblingThreeFirstName: { type: String},
+              youngerSiblingThreeLastName: { type: String},
+              youngerSiblingThreeMaritalStatus: { type: String,
                               enum:['Single','Widow','Widower','Divorce','']},
             }
-          ],
+          },
           spousePreference: {
-            complexion: {type: String,
-                        enum:['Very Dark','Dark','Whitish','Fair','Very Fair']},
-                        height:{type:Number},
-            physique:{type: String,
-                      enum:['Average','Athletic','Slim','Fit','Muscular','Curvy','Slightly Overweight']},
+            spouseComplexion: {type: String,
+                        enum:['Very Dark','Dark','Whitish','Fair','Very Fair','']},
+            spouseHeight:{type:Number},
+            spousePhysique:{type: String,
+                      enum:['Average','Athletic','Slim','Fit','Muscular','Curvy','Slightly Overweight','']},
           },
           otherDetails: {
             aboutSelf:{type: String},
