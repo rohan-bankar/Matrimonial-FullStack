@@ -328,9 +328,72 @@ const viewProfile = asyncHandler(async(req,res)=>{
     )
 })
 
+const updateFormFields = asyncHandler(async(req,res)=>{
+    const userId = req.user._id;
+    const{
+        country,
+        state,
+        city,
+        villageTown,
+        pin
+    } = req.body;
+
+    const updatedForm = await Form.findOneAndUpdate(
+        {createdBy:userId},
+        {
+            $set:{
+                "contactInformation.country":country,
+                "contactInformation.state":state,
+                "contactInformation.city":city,
+                "contactInformation.villageTown":villageTown,
+                "contactInformation.pin":pin
+            }
+        },
+        {new:true}
+    );
+    
+    if(!updatedForm){
+        throw new ApiError(404,"Form not found");
+    }
+
+    return res
+    .status(201)
+    .json(
+        new ApiResponse(200,updatedForm,"Form fields updated successfully")
+    )
+})
+
+const filterUser = asyncHandler(async(req,res)=>{
+    // const userId = req.user._id;
+    const{cast,gender} = req.body.personalInformation;
+
+    const filter = {
+        // createdBy: userId,
+    };
+    
+    if(cast){
+        filter["personalInformation.cast"] = cast
+    }
+    if(gender){
+        filter["personalInformation.gender"] = gender
+    }
+    const profiles = await Form.find(filter);
+
+    if(!profiles || profiles.length === 0){
+        throw new ApiError(404,"No profile found matching the criteria");
+    }
+
+    return res
+    .status(201)
+    .json(
+        new ApiResponse(200,profiles,"Filter profiles retrieved successfully")
+    )
+})
 
 
 export{
     userInfo,
-    viewProfile
+    viewProfile,
+    updateFormFields,
+    filterUser
 }
