@@ -313,13 +313,13 @@ const viewProfile = asyncHandler(async(req,res)=>{
         {createdBy:userId}
     )
     
-    const existedUser = await Form.findOne({
-        personalInformation:{firstName}
-    }
-    )
-    if(existedUser){
-        throw new ApiError(409,"No profile found");
-    }
+    // const existedUser = await Form.findOne({
+    //     personalInformation:{firstName}
+    // }
+    // )
+    // if(existedUser){
+    //     throw new ApiError(409,"No profile found");
+    // }
 
     return res
     .status(201)
