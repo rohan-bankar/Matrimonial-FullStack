@@ -307,6 +307,30 @@ new ApiResponse(200,form,"User data save successfully")
 )
 })
 
+const viewProfile = asyncHandler(async(req,res)=>{
+    const userId = req.user._id;
+    const profile = await Form.find(
+        {createdBy:userId}
+    )
+    
+    const existedUser = await Form.findOne({
+        personalInformation:{firstName}
+    }
+    )
+    if(existedUser){
+        throw new ApiError(409,"No profile found");
+    }
+
+    return res
+    .status(201)
+    .json(
+        new ApiResponse(200,profile,"User profile view successfully")
+    )
+})
+
+
+
 export{
-    userInfo
+    userInfo,
+    viewProfile
 }
