@@ -196,10 +196,87 @@ const changePassword = asyncHandler(async(req,res)=>{
     )
 })
 
+const loginAdmin = asyncHandler(async(req,res)=>{
+    const{email,password} = req.body;
+    if(!email){
+        throw new ApiError(400,"email is required");
+    }
+    const user = await User.findOne({email});
+
+    if(!user){
+        throw new ApiError(400,"user not exist");
+    }
+
+    const isPasswordValid = await user.isPasswordCorrect(password);
+    
+    if(!isPasswordValid){
+        throw new ApiError(400,"email or password is not correct");
+    }
+
+    if(user.isAdmin !== 1){
+        throw new ApiError(400," not a admin");
+    }
+
+    const {accessToken,refreshToken} = await generateAccessAndRefreshToken(user._id);
+
+    const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
+
+    const options = {
+        httpOnly:true,
+        secure:true
+    }
+
+    return res
+    .status(201)
+    .cookie("accessToken",accessToken,options)
+    .cookie("refreshToken",refreshToken,options)
+    .json(
+        new ApiResponse(
+            200,
+            {
+                user:loggedInUser,accessToken,refreshToken
+            },
+            "Admin logged in successfully"
+        )
+    )
+})
+
+const logoutAdmin = asyncHandler(async(req,res)=>{
+    if(req.user.isAdmin !== 1){
+        throw new ApiError(403,"Not an admin");
+    }
+
+    await User.findByIdAndUpdate(
+        req.user._id,
+        {
+            $unset:{
+                refreshToken:1
+            }
+        },
+        {
+            new: true
+        }
+    );
+
+    const options ={
+        httpOnly:true,
+        secure:true
+    };
+    return res
+    .status(201)
+    .clearCookie("accessToken",options)
+    .clearCookie("refreshToken",options)
+    .json(
+        new ApiResponse(200,{},"Admin logged out")
+    )
+
+})
 export{
     registerUser,
     verifyEmail,
     loginUser,
     logoutUser,
-    changePassword
+    changePassword,
+    loginAdmin,
+    logoutAdmin
 }

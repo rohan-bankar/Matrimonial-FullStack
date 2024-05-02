@@ -14,10 +14,11 @@ app.use(cookieParser());
 
 import userRouter from './routes/user.routes.js';
 import formRouter from './routes/form.routes.js';
+import adminRouter from './routes/admin.routes.js';
 
 app.use("/api/v1/users",userRouter);
 app.use("/api/v1/form",formRouter);
-
+app.use("/api/v1/admin",adminRouter);
 
 
 export{app};
