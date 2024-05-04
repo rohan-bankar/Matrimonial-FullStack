@@ -24,8 +24,6 @@ const cleanEmptyValues = (obj) => {
     return obj;
 };
 
-
-
 const userInfo = asyncHandler(async(req,res)=>{
       const cleanedBody = cleanEmptyValues(req.body);
    const{ 
@@ -328,7 +326,7 @@ const viewProfile = asyncHandler(async(req,res)=>{
     )
 })
 
-const updateFormFields = asyncHandler(async(req,res)=>{
+const updateFormFieldsContactInformation = asyncHandler(async(req,res)=>{
     const userId = req.user._id;
     const{
         country,
@@ -363,6 +361,72 @@ const updateFormFields = asyncHandler(async(req,res)=>{
     )
 })
 
+// const updateFormFieldsEducationDetails = asyncHandler(async(req,res)=>{
+//     const userId = req.user._id;
+//     const cleanedBody = cleanEmptyValues(req.body);
+//     const{
+//         educationType,
+//         tenthSchoolName,
+//         tenthMarks,
+//         diplomaCollegeName,
+//         diplomaCourseName,
+//         diplomaMarks,
+//         twelfthCollegeName,
+//         twelfthCourseName,
+//         twelfthMarks,
+//         graduationCollegeName,
+//         graduationCourseName,
+//         graduationMarks,
+//         postGraduationCollegeName,
+//         postGraduationCourseName,
+//         postGraduationSpecialization,
+//         postGraduationMarks,
+//         phdCollegeName,
+//         phdCourseName,
+//         phdSpecialization,
+//         phdMarks  
+//     } = cleanedBody;
+// console.log(cleanedBody);
+//     const updatedForm = await Form.findOneAndUpdate(
+//         {createdBy:userId},
+//         {
+//             $set:{
+//                 "educationDetails.educationType": educationType, 
+//                 "educationDetails.tenthSchoolName":tenthSchoolName, 
+//                 "educationDetails.tenthMarks":tenthMarks, 
+//                 "educationDetails.diplomaCollegeName":diplomaCollegeName, 
+//                 "educationDetails.diplomaCourseName":diplomaCourseName, 
+//                 "educationDetails.diplomaMarks":diplomaMarks, 
+//                 "educationDetails.twelfthCollegeName":twelfthCollegeName, 
+//                 "educationDetails.twelfthCourseName":twelfthCourseName, 
+//                 "educationDetails.twelfthMarks":twelfthMarks, 
+//                 "educationDetails.graduationCollegeName":graduationCollegeName, 
+//                 "educationDetails.graduationCourseName":graduationCourseName, 
+//                 "educationDetails.graduationMarks":graduationMarks, 
+//                 "educationDetails.postGraduationCollegeName":postGraduationCollegeName, 
+//                 "educationDetails.postGraduationCourseName":postGraduationCourseName, 
+//                 "educationDetails.postGraduationSpecialization":postGraduationSpecialization, 
+//                 "educationDetails.postGraduationMarks":postGraduationMarks, 
+//                 "educationDetails.phdCollegeName":phdCollegeName, 
+//                 "educationDetails.phdCourseName":phdCourseName, 
+//                 "educationDetails.phdSpecialization":phdSpecialization, 
+//                 "educationDetails.phdMarks":phdMarks 
+//             },
+//         },
+//         {new:true}
+//     );
+//     // cleanEmptyValues(updatedForm)
+//     if(!updatedForm){
+//         throw new ApiError(404,"Form not found");
+//     }
+
+//     return res
+//     .status(201)
+//     .json(
+//         new ApiResponse(200,updatedForm,"Form fields updated successfully")
+//     )
+// })
+
 const filterUser = asyncHandler(async(req,res)=>{
     // const userId = req.user._id;
     const{cast,gender} = req.body.personalInformation;
@@ -390,10 +454,42 @@ const filterUser = asyncHandler(async(req,res)=>{
     )
 })
 
+const searchBar = asyncHandler(async(req,res)=>{
+    const {firstName,lastName} = req.body.personalInformation;
+    const filter = {};
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    if(firstName){
+        filter["personalInformation.firstName"] = firstName
+    }
+    if(lastName){
+        filter["personalInformation.lastName"] = lastName
+    }
+
+    const skip = (page - 1) * limit; 
+
+    const profiles = await Form.find(filter)
+                               .skip(skip)
+                               .limit(limit);
+
+    if(!profiles || profiles.length === 0){
+        throw new ApiError(404,"No profile found")
+    }
+
+    return res
+    .status(201)
+    .json(
+        new ApiResponse(200,profiles,"search profiles found")
+    )
+})
 
 export{
     userInfo,
     viewProfile,
-    updateFormFields,
-    filterUser
+    updateFormFieldsContactInformation,
+    // updateFormFieldsEducationDetails,
+    filterUser,
+    searchBar
 }
