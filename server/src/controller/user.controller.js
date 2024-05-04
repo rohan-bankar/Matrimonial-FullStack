@@ -21,27 +21,37 @@ const generateAccessAndRefreshToken = async(userId)=>{
     }
 }
 
-const transporter = nodemailer.createTransport({
-    host:"smtp.gmail.com",
-    port:587,
-    secure:false,
-    requireTLS:true,
-    auth:{
-        user: process.env.APP_EMAIL,
-        pass: process.env.APP_PASSWORD
-    }
-})
+const sendVerificationEmail = async(firstName,email,userId)=>{
+    try {
+        const transporter = nodemailer.createTransport({
+                host:"smtp.gmail.com",
+                port:587,
+                secure:false,
+                requireTLS:true,
+                auth:{
+                    user:process.env.APP_EMAIL ,
+                    pass:process.env.APP_PASSWORD
+                }
+            })
 
-async function sendVerificationEmail(email){
-    const mailOptions = {
-        from:"rbankar102@gmail.com",
-        to:email,
-        subject:"Verify your email address",
-        text: `Click the following link to verify your email address: http://localhost:8000/api/v1/verify-email`
+            const mailOptions = {
+                        from:"rbankar102@gmail.com",
+                        to:email,
+                        subject:"Verify your email address",
+                        html:`<p>Hi ${firstName}, please click here to <a href="http://localhost:8000/api/v1/verify-email?id=${userId}">verify</a> your mail.</p>`
+                    }
+                    transporter.sendMail(mailOptions,function(error,info){
+                        if(error){
+                            console.log(error);
+                        }else{
+                            console.log("Email has been send:",info.response);
+                        }
+                    })
+    } catch (error) {
+        console.log(error.message);
     }
-
-    await transporter.sendMail(mailOptions);
 }
+
 
 const registerUser = asyncHandler(async(req,res)=>{
 
@@ -70,11 +80,11 @@ const registerUser = asyncHandler(async(req,res)=>{
         })
         console.log(user);
 
-        await sendVerificationEmail(email);
-
         const createdUser = await User.findById(user._id).select(
             "-password -refreshToken"
         )
+        console.log(createdUser);
+        await sendVerificationEmail(req.body.firstName,req.body.email,createdUser._id);
 
         if(!createdUser){
             throw new ApiError(500,"Something went wrong while registering the user")
@@ -86,21 +96,28 @@ const registerUser = asyncHandler(async(req,res)=>{
 })
 
 const verifyEmail = asyncHandler(async(req,res)=>{
-        const {email} = req.body;
+    const userId = req.query.id;
 
-        const user = await User.findOne({email});
+    if (!userId) {
+        throw new ApiError(400, "User ID is missing");
+    }
 
-        if(!user || user.isVerified){
-            throw new ApiError(400,"User not found or already verified");
-        }
+    const user = await User.findById(userId);
 
-        user.isVerified = 1;
-        await user.save();
+    if (!user) {
+        throw new ApiError(404, "User not found");
+    }
 
-        res.status(200).json(
-            new ApiResponse(200,null,"Email verified successfully")
-        )
-})
+    if (user.isVerified) {
+        // User is already verified
+        return res.status(200).json(new ApiResponse(200, {}, "User is already verified"));
+    }
+
+    user.isVerified = 1;
+    await user.save();
+
+    res.status(200).json(new ApiResponse(200, {}, "Email verified successfully"));
+});
 
 const loginUser = asyncHandler(async(req,res)=>{
     const {email,password} = req.body;
