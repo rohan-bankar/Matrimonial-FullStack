@@ -5,6 +5,8 @@ import {ApiResponse} from "../utils/ApiResponse.js";
 import  Jwt  from "jsonwebtoken";
 import mongoose from "mongoose";
 import nodemailer from "nodemailer";
+import randomstring from "randomstring";
+import { updateFormFieldsContactInformation } from "./form.controller.js";
 
 const generateAccessAndRefreshToken = async(userId)=>{
     try {
@@ -35,7 +37,7 @@ const sendVerificationEmail = async(firstName,email,userId)=>{
             })
 
             const mailOptions = {
-                        from:"rbankar102@gmail.com",
+                        from:process.env.APP_EMAIL,
                         to:email,
                         subject:"Verify your email address",
                         html:`<p>Hi ${firstName}, please click here to <a href="http://localhost:8000/api/v1/verify-email?id=${userId}">verify</a> your mail.</p>`
@@ -52,6 +54,36 @@ const sendVerificationEmail = async(firstName,email,userId)=>{
     }
 }
 
+const sendVerificationEmailForPassword = async(firstName,email,token)=>{
+    try {
+        const transporter = nodemailer.createTransport({
+                host:"smtp.gmail.com",
+                port:587,
+                secure:false,
+                requireTLS:true,
+                auth:{
+                    user:process.env.APP_EMAIL ,
+                    pass:process.env.APP_PASSWORD
+                }
+            })
+
+            const mailOptions = {
+                        from:process.env.APP_EMAIL,
+                        to:email,
+                        subject:"For reset password",
+                        html:`<p>Hi ${firstName}, please click here to <a href="http://localhost:8000/api/v1/forget-password?token=${token}"> Reset</a> your password.</p>`
+                    }
+                    transporter.sendMail(mailOptions,function(error,info){
+                        if(error){
+                            console.log(error);
+                        }else{
+                            console.log("Email has been send:",info.response);
+                        }
+                    })
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 const registerUser = asyncHandler(async(req,res)=>{
 
@@ -194,9 +226,9 @@ const logoutUser = asyncHandler(async(req,res)=>{
 })
 
 const changePassword = asyncHandler(async(req,res)=>{
-    const {email,oldPassword,newPassword} = req.body;
+    const {oldPassword,newPassword} = req.body;
 
-    const user = await User.findOne({email})
+    const user = await User.findById(req.user?._id)
     const isPasswordCorrect = await user.isPasswordCorrect(oldPassword);
 
     if(!isPasswordCorrect){
@@ -286,7 +318,51 @@ const logoutAdmin = asyncHandler(async(req,res)=>{
     .json(
         new ApiResponse(200,{},"Admin logged out")
     )
+})
 
+const forgetPasswordEmail = asyncHandler(async(req,res)=>{
+    const email = req.body.email;
+    const userData = await User.findOne({email})
+
+    if(userData.isVerified === 0){
+        throw new ApiError(404,"please verify your email")
+    }else{
+        const randomString = randomstring.generate();
+        await User.updateOne({email},{$set:{token:randomString}});
+        sendVerificationEmailForPassword(userData.firstName,userData.email,randomString)
+    }
+
+    console.log(`token:${userData.token}`);
+    if(!userData){
+       throw new ApiError(404,"user email is incorrect")
+    }
+
+    return res
+    .status(201)
+    .json(
+        new ApiResponse(200,userData,"Please check your email to reset password")
+    )
+})
+
+
+const resetPassword = asyncHandler(async(req,res)=>{
+    const token = req.params.token;
+    const password = req.body.password;
+    const userData = await User.findOne({token});
+    if(!userData){
+        throw new ApiError(400,"Invalid token")
+    }
+
+    // const securePassword = await userData.isPasswordCorrect(password);
+    userData.password = password
+    userData.token = ''
+    await userData.save({validateBeforeSave:false});
+     console.log(`new password:${userData.password}`);
+    return res
+    .status(201)
+    .json(
+        new ApiResponse(200,{},"password reset successfully")
+    )
 })
 export{
     registerUser,
@@ -295,5 +371,7 @@ export{
     logoutUser,
     changePassword,
     loginAdmin,
-    logoutAdmin
+    logoutAdmin,
+    forgetPasswordEmail,
+    resetPassword
 }
