@@ -6,11 +6,21 @@ import Layout from './Layout.jsx'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import SignUp from './components/SignUp/SignUp.jsx'
 import Login from './components/Login/Login.jsx'
+import Admin from './components/Admin/Admin.jsx'
+import ChangePassword from './components/ChangePassword/ChangePassword.jsx'
+import EmailVerify from './components/EmailVerify/EmailVerify.jsx'
+import ForgetPasswordEmail from './components/ForgetPasswordEmail/ForgetPasswordEmail.jsx'
+import ResetPassword from './components/ResetPassword/ResetPassword.jsx'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout/>}>
-    <Route path='/' element={<SignUp/>}></Route>
-    <Route path='/login' element={<Login/>}></Route>
+    <Route path='/' element={<SignUp/>}/>
+    <Route path='/login' element={<Login/>}/>
+    <Route path='/admin-login' element={<Admin/>}/>
+    <Route path='/change-password' element={<ChangePassword/>}/>
+    <Route path='/email-verify' element={<EmailVerify/>}/>
+    <Route path='/forget-password-email' element={<ForgetPasswordEmail/>}/>
+    <Route path='/reset-password' element={<ResetPassword/>}/>
   </Route>
 ))
 
