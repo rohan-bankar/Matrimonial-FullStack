@@ -7,7 +7,7 @@ const EmailVerify = () => {
   const [verificationStatus, setVerificationStatus] = useState();
 
   const verifyEmail = () => {
-    axios.get(`/api/v1/verify-email/${userId}`)
+    axios.get(`/api/v1/users/verify-email/${userId}`)
       .then(response => {
         setVerificationStatus(response.data.message);
       })

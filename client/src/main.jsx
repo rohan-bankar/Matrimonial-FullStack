@@ -12,7 +12,7 @@ import EmailVerify from './components/EmailVerify/EmailVerify.jsx'
 import ForgetPasswordEmail from './components/ForgetPasswordEmail/ForgetPasswordEmail.jsx'
 import ResetPassword from './components/ResetPassword/ResetPassword.jsx'
 import Home from './components/Home/Home.jsx'
-
+import Form from './components/Form/Form.jsx'
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout/>}>
     <Route path='/' element={<SignUp/>}/>
@@ -23,6 +23,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/verify-email/:userId' element={<EmailVerify/>}/>
     <Route path='/forget-password-email' element={<ForgetPasswordEmail/>}/>
     <Route path='/reset-password' element={<ResetPassword/>}/>
+    <Route path='/form' element={<Form/>}/>
   </Route>
 ))
 
