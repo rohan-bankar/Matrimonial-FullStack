@@ -481,7 +481,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>educationDetails</p>
+                <p className='mt-5'>Education Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="educationType">Education Type</label>
@@ -710,7 +710,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>Elder Sibling</p>
+                {/* <p className='mt-5'>Elder Sibling</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="elderSiblingOneFirstName">First Name</label>
@@ -780,7 +780,7 @@ function Form() {
                     />
                     </div>
                 </div>
-                <hr />
+                <hr /> */}
 
                 <p className='mt-5'>Spouse Preference</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
@@ -822,7 +822,7 @@ function Form() {
                 <p className='mt-5'>Other Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
-                    <label htmlFor="aboutSelf"></label>
+                    <label htmlFor="aboutSelf">About Self</label>
                     <input
                     type='text'
                     name='aboutSelf'
@@ -833,7 +833,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="foodPreference"></label>
+                    <label htmlFor="foodPreference">Food Preference</label>
                     <input
                     type='text'
                     name='foodPreference'

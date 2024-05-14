@@ -32,7 +32,9 @@ const Home = () => {
     <div>
         <div>Welcome to home page</div>
         <button className='border rounded bg-orange-600' onClick={handleLogout}>Logout</button><br />
-        <button onClick={()=>navigate('/form')}>Form</button>
+        <button onClick={()=>navigate('/form')}>Form</button><br />
+        <button onClick={()=>navigate('/profile')}>Profile</button><br />
+        <button onClick={()=>navigate('/search')}>Search</button>
     </div>
     
   )

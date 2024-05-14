@@ -13,6 +13,8 @@ import ForgetPasswordEmail from './components/ForgetPasswordEmail/ForgetPassword
 import ResetPassword from './components/ResetPassword/ResetPassword.jsx'
 import Home from './components/Home/Home.jsx'
 import Form from './components/Form/Form.jsx'
+import Profile from './components/ProfilePage/ProfilePage.jsx'
+import Search from './components/Search/Search.jsx'
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout/>}>
     <Route path='/' element={<SignUp/>}/>
@@ -24,6 +26,8 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/forget-password-email' element={<ForgetPasswordEmail/>}/>
     <Route path='/reset-password' element={<ResetPassword/>}/>
     <Route path='/form' element={<Form/>}/>
+    <Route path='/profile' element={<Profile/>}/>
+    <Route path='/search' element={<Search/>}/>
   </Route>
 ))
 
