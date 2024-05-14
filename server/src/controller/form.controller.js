@@ -108,40 +108,40 @@ const userInfo = asyncHandler(async(req,res)=>{
             surName2,
             surName3
         },
-    elderSiblings:{
-        elderSiblingOne:{
-            elderSiblingOneFirstName,
-            elderSiblingOneLastName,
-            elderSiblingOneMaritalStatus,
-        },
-        // elderSiblingTwo:{
-        //     elderSiblingTwoFirstName,
-        //     elderSiblingTwoLastName,
-        //     elderSiblingTwoMaritalStatus,
-        // },
-        // elderSiblingThree:{
-        //     elderSiblingThreeFirstName,
-        //     elderSiblingThreeLastName,
-        //     elderSiblingThreeMaritalStatus,
-        // }
-    },
-    youngerSiblings:{
-        youngerSiblingOne:{
-            youngerSiblingOneFirstName,
-            youngerSiblingOneLastName,
-            youngerSiblingOneMaritalStatus,
-        },
-        // youngerSiblingTwo:{
-        //     youngerSiblingTwoFirstName,
-        //     youngerSiblingTwoLastName,
-        //     youngerSiblingTwoMaritalStatus,
-        // },
-        // youngerSiblingThree:{
-        //     youngerSiblingThreeFirstName,
-        //     youngerSiblingThreeLastName,
-        //     youngerSiblingThreeMaritalStatus,
-        // }
-    },
+    // elderSiblings:{
+    //     elderSiblingOne:{
+    //         elderSiblingOneFirstName,
+    //         elderSiblingOneLastName,
+    //         elderSiblingOneMaritalStatus,
+    //     },
+    //     elderSiblingTwo:{
+    //         elderSiblingTwoFirstName,
+    //         elderSiblingTwoLastName,
+    //         elderSiblingTwoMaritalStatus,
+    //     },
+    //     elderSiblingThree:{
+    //         elderSiblingThreeFirstName,
+    //         elderSiblingThreeLastName,
+    //         elderSiblingThreeMaritalStatus,
+    //     }
+    // },
+    // youngerSiblings:{
+    //     youngerSiblingOne:{
+    //         youngerSiblingOneFirstName,
+    //         youngerSiblingOneLastName,
+    //         youngerSiblingOneMaritalStatus,
+    //     },
+    //     youngerSiblingTwo:{
+    //         youngerSiblingTwoFirstName,
+    //         youngerSiblingTwoLastName,
+    //         youngerSiblingTwoMaritalStatus,
+    //     },
+    //     youngerSiblingThree:{
+    //         youngerSiblingThreeFirstName,
+    //         youngerSiblingThreeLastName,
+    //         youngerSiblingThreeMaritalStatus,
+    //     }
+    // },
     spousePreference:{
         spouseComplexion,
         spousePhysique,
@@ -243,40 +243,40 @@ const form = await Form.create({
         surName2,
         surName3
     },
-    elderSiblings:{
-        elderSiblingOne:{
-            elderSiblingOneFirstName,
-            elderSiblingOneLastName,
-            elderSiblingOneMaritalStatus,
-        },
-        // elderSiblingTwo:{
-        //     elderSiblingTwoFirstName,
-        //     elderSiblingTwoLastName,
-        //     elderSiblingTwoMaritalStatus,
-        // },
-        // elderSiblingThree:{
-        //     elderSiblingThreeFirstName,
-        //     elderSiblingThreeLastName,
-        //     elderSiblingThreeMaritalStatus,
-        // }
-    },
-    youngerSiblings:{
-        youngerSiblingOne:{
-            youngerSiblingOneFirstName,
-            youngerSiblingOneLastName,
-            youngerSiblingOneMaritalStatus,
-        },
-        // youngerSiblingTwo:{
-        //     youngerSiblingTwoFirstName,
-        //     youngerSiblingTwoLastName,
-        //     youngerSiblingTwoMaritalStatus,
-        // },
-        // youngerSiblingThree:{
-        //     youngerSiblingThreeFirstName,
-        //     youngerSiblingThreeLastName,
-        //     youngerSiblingThreeMaritalStatus,
-        // }
-    },
+    // elderSiblings:{
+    //     elderSiblingOne:{
+    //         elderSiblingOneFirstName,
+    //         elderSiblingOneLastName,
+    //         elderSiblingOneMaritalStatus,
+    //     },
+    //     elderSiblingTwo:{
+    //         elderSiblingTwoFirstName,
+    //         elderSiblingTwoLastName,
+    //         elderSiblingTwoMaritalStatus,
+    //     },
+    //     elderSiblingThree:{
+    //         elderSiblingThreeFirstName,
+    //         elderSiblingThreeLastName,
+    //         elderSiblingThreeMaritalStatus,
+    //     }
+    // },
+    // youngerSiblings:{
+    //     youngerSiblingOne:{
+    //         youngerSiblingOneFirstName,
+    //         youngerSiblingOneLastName,
+    //         youngerSiblingOneMaritalStatus,
+    //     },
+    //     youngerSiblingTwo:{
+    //         youngerSiblingTwoFirstName,
+    //         youngerSiblingTwoLastName,
+    //         youngerSiblingTwoMaritalStatus,
+    //     },
+    //     youngerSiblingThree:{
+    //         youngerSiblingThreeFirstName,
+    //         youngerSiblingThreeLastName,
+    //         youngerSiblingThreeMaritalStatus,
+    //     }
+    // },
     spousePreference:{
         spouseComplexion,
         spousePhysique,
@@ -429,7 +429,7 @@ const updateFormFieldsContactInformation = asyncHandler(async(req,res)=>{
 
 const filterUser = asyncHandler(async(req,res)=>{
     // const userId = req.user._id;
-    const{cast,gender} = req.body.personalInformation;
+    const{cast,gender,maritalStatus} = req.body.personalInformation;
 
     const filter = {
         // createdBy: userId,
@@ -440,6 +440,9 @@ const filterUser = asyncHandler(async(req,res)=>{
     }
     if(gender){
         filter["personalInformation.gender"] = gender
+    }
+    if(maritalStatus){
+        filter["personalInformation.maritalStatus"] = maritalStatus
     }
     const profiles = await Form.find(filter);
 
@@ -455,17 +458,18 @@ const filterUser = asyncHandler(async(req,res)=>{
 })
 
 const searchBar = asyncHandler(async(req,res)=>{
-    const {firstName,lastName} = req.body.personalInformation;
+    const {name} = req.body;
     const filter = {};
 
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
-    if(firstName){
-        filter["personalInformation.firstName"] = firstName
-    }
-    if(lastName){
-        filter["personalInformation.lastName"] = lastName
+    if(name){
+        filter.$or = [
+            { "personalInformation.firstName": name },
+            { "personalInformation.lastName": name }
+        ];
+
     }
 
     const skip = (page - 1) * limit; 
@@ -485,11 +489,26 @@ const searchBar = asyncHandler(async(req,res)=>{
     )
 })
 
+const viewUsersProfile = asyncHandler(async(req,res)=>{
+    const userId = req.params.userId
+    console.log(userId);
+    const profile = await Form.findById(userId)
+    if(!profile){
+        throw new ApiError(404,'profile not found')
+    }
+
+    return res
+    .status(201)
+    .json(
+        new ApiResponse(200,profile,'profile view successfully')
+    )
+})
 export{
     userInfo,
     viewProfile,
     updateFormFieldsContactInformation,
     // updateFormFieldsEducationDetails,
     filterUser,
-    searchBar
+    searchBar,
+    viewUsersProfile
 }

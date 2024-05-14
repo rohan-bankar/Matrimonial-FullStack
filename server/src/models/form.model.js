@@ -201,46 +201,46 @@ const formSchema = new Schema(
               surName2:{type:String},
               surName3:{type:String}
             },
-          elderSiblings: {
-           elderSiblingOne: {
-            elderSiblingOneFirstName: { type: String},
-            elderSiblingOneLastName: { type: String},
-            elderSiblingOneMaritalStatus: { type: String,
-                              enum:['Single','Widow','Widower','Divorce',''] },
-            },
-            elderSiblingTwo: {
-              elderSiblingTwoFirstName: { type: String},
-              elderSiblingTwoLastName: { type: String},
-              elderSiblingTwoMaritalStatus: { type: String,
-                              enum:['Single','Widow','Widower','Divorce',''] },
-            },
-            elderSiblingThree: {
-              elderSiblingThreeFirstName: { type: String},
-              elderSiblingThreeLastName: { type: String},
-              elderSiblingThreeMaritalStatus: { type: String,
-                              enum:['Single','Widow','Widower','Divorce',''] },
-            },
-          },
-          youngerSiblings: {
-            youngerSiblingOne:{
-              youngerSiblingOneFirstName: { type: String},
-              youngerSiblingOneLastName: { type: String},
-              youngerSiblingOneMaritalStatus: { type: String,
-                              enum:['Single','Widow','Widower','Divorce','']},
-            },
-            youngerSiblingTwo:{
-              youngerSiblingTwoFirstName: { type: String},
-              youngerSiblingTwoLastName: { type: String},
-              youngerSiblingTwoMaritalStatus: { type: String,
-                              enum:['Single','Widow','Widower','Divorce','']},
-            },
-            youngerSiblingThree:{
-              youngerSiblingThreeFirstName: { type: String},
-              youngerSiblingThreeLastName: { type: String},
-              youngerSiblingThreeMaritalStatus: { type: String,
-                              enum:['Single','Widow','Widower','Divorce','']},
-            }
-          },
+          // elderSiblings: {
+          //  elderSiblingOne: {
+          //   elderSiblingOneFirstName: { type: String},
+          //   elderSiblingOneLastName: { type: String},
+          //   elderSiblingOneMaritalStatus: { type: String,
+          //                     enum:['Single','Widow','Widower','Divorce',''] },
+          //   },
+          //   elderSiblingTwo: {
+          //     elderSiblingTwoFirstName: { type: String},
+          //     elderSiblingTwoLastName: { type: String},
+          //     elderSiblingTwoMaritalStatus: { type: String,
+          //                     enum:['Single','Widow','Widower','Divorce',''] },
+          //   },
+          //   elderSiblingThree: {
+          //     elderSiblingThreeFirstName: { type: String},
+          //     elderSiblingThreeLastName: { type: String},
+          //     elderSiblingThreeMaritalStatus: { type: String,
+          //                     enum:['Single','Widow','Widower','Divorce',''] },
+          //   },
+          // },
+          // youngerSiblings: {
+          //   youngerSiblingOne:{
+          //     youngerSiblingOneFirstName: { type: String},
+          //     youngerSiblingOneLastName: { type: String},
+          //     youngerSiblingOneMaritalStatus: { type: String,
+          //                     enum:['Single','Widow','Widower','Divorce','']},
+          //   },
+          //   youngerSiblingTwo:{
+          //     youngerSiblingTwoFirstName: { type: String},
+          //     youngerSiblingTwoLastName: { type: String},
+          //     youngerSiblingTwoMaritalStatus: { type: String,
+          //                     enum:['Single','Widow','Widower','Divorce','']},
+          //   },
+          //   youngerSiblingThree:{
+          //     youngerSiblingThreeFirstName: { type: String},
+          //     youngerSiblingThreeLastName: { type: String},
+          //     youngerSiblingThreeMaritalStatus: { type: String,
+          //                     enum:['Single','Widow','Widower','Divorce','']},
+          //   }
+          // },
           spousePreference: {
             spouseComplexion: {type: String,
                         enum:['Very Dark','Dark','Whitish','Fair','Very Fair','']},
