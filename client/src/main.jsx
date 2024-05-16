@@ -15,6 +15,7 @@ import Home from './components/Home/Home.jsx'
 import Form from './components/Form/Form.jsx'
 import Profile from './components/ProfilePage/ProfilePage.jsx'
 import Search from './components/Search/Search.jsx'
+import AdminDashBoard from './components/AdminDashBoard/AdminDashBoard.jsx'
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout/>}>
     <Route path='/' element={<SignUp/>}/>
@@ -24,10 +25,11 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/change-password' element={<ChangePassword/>}/>
     <Route path='/verify-email/:userId' element={<EmailVerify/>}/>
     <Route path='/forget-password-email' element={<ForgetPasswordEmail/>}/>
-    <Route path='/reset-password' element={<ResetPassword/>}/>
+    <Route path='/reset-password/:token' element={<ResetPassword/>}/>
     <Route path='/form' element={<Form/>}/>
     <Route path='/profile' element={<Profile/>}/>
     <Route path='/search' element={<Search/>}/>
+    <Route path='/dash-board' element={<AdminDashBoard/>}/>
   </Route>
 ))
 

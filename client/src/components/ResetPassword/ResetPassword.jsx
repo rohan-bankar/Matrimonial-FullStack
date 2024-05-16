@@ -1,26 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-function ResetPassword() {
+const ResetPasswordForm = () => {
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  const { token } = useParams();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(`/api/v1/users/reset-password/${token}`, { password });
+      setMessage(response.data.message);
+      setError('');
+      setTimeout(() => {
+        navigate('/login'); 
+      }, 3000);
+    } catch (err) {
+      if (err.response) {
+        setError(err.response.data.message);
+      } else {
+        setError('Something went wrong. Please try again later.');
+      }
+      setMessage('');
+    }
+  };
+
   return (
     <div>
-      <div className='w-1/4 mx-auto p-5 rounded border'>
-        <form>
-            <div>
-              <label htmlFor='password'>
-                  <strong>Password</strong>
-              </label><br />
-              <input 
-                type="password"
-                placeholder='Enter password'
-                name='password'
-                className='border rounded p-2 w-full'
-              />
-            </div>
-            <button className='p-3 mt-5 border-none w-full rounded bg-orange-600'>Submit</button>
-        </form>
-      </div>
+      <h2>Reset Password</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="password">New Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Reset Password</button>
+      </form>
+      {message && <p>{message}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
-  )
-}
+  );
+};
 
-export default ResetPassword
+export default ResetPasswordForm;

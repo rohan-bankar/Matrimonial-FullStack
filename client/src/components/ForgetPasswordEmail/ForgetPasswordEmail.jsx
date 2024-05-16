@@ -1,26 +1,49 @@
-import React from 'react'
+// src/ForgetPasswordForm.js
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const forgetPasswordEmail = () => {
+const ForgetPasswordForm = () => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('/api/v1/users/forget-password', { email });
+      setMessage(response.data.message);
+      setError('');
+    } catch (err) {
+      if (err.response) {
+        setError(err.response.data.message);
+      } else {
+        setError('Something went wrong. Please try again later.');
+      }
+      setMessage('');
+    }
+  };
+
   return (
     <div>
-        <div className='w-1/4 mx-auto p-5 rounded border'>
-            <form>
-                <div>
-                    <label htmlFor='email'>
-                        <strong>Email</strong>
-                    </label><br />
-                    <input 
-                        type="text"
-                        placeholder='Enter Email'
-                        name='email'
-                        className='border rounded p-2 w-full'
-                    />
-                </div>
-                <button className='p-3 mt-5 border-none w-11/12 rounded bg-orange-600'>Submit</button>
-            </form>
+      <h2>Forget Password</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
+        <button type="submit">Submit</button>
+      </form>
+      {message && <p>{message}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
-  )
-}
+  );
+};
 
-export default forgetPasswordEmail
+export default ForgetPasswordForm;

@@ -34,7 +34,8 @@ const Home = () => {
         <button className='border rounded bg-orange-600' onClick={handleLogout}>Logout</button><br />
         <button onClick={()=>navigate('/form')}>Form</button><br />
         <button onClick={()=>navigate('/profile')}>Profile</button><br />
-        <button onClick={()=>navigate('/search')}>Search</button>
+        <button onClick={()=>navigate('/search')}>Search</button><br />
+        <button onClick={()=>navigate('/change-password')}>Change Password</button>
     </div>
     
   )
