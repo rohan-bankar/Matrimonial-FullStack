@@ -40,7 +40,7 @@ const sendVerificationEmail = async(firstName,email,userId)=>{
                         from:process.env.APP_EMAIL,
                         to:email,
                         subject:"Verify your email address",
-                        html:`<p>Hi ${firstName}, please click here to <a href="http://localhost:8000/api/v1/users/verify-email/${userId}">verify</a> your mail.</p>`
+                        html:`<p>Hi ${firstName}, please click here to <a href="http://localhost:5173/verify-email/${userId}">verify</a> your mail.</p>`
                     }
                     transporter.sendMail(mailOptions,function(error,info){
                         if(error){
@@ -71,7 +71,7 @@ const sendVerificationEmailForPassword = async(firstName,email,token)=>{
                         from:process.env.APP_EMAIL,
                         to:email,
                         subject:"For reset password",
-                        html:`<p>Hi ${firstName}, please click here to <a href="http://localhost:8000/api/v1/forget-password?token=${token}"> Reset</a> your password.</p>`
+                        html:`<p>Hi ${firstName}, please click here to <a href="http://localhost:5173/reset-password/${token}"> Reset</a> your password.</p>`
                     }
                     transporter.sendMail(mailOptions,function(error,info){
                         if(error){
