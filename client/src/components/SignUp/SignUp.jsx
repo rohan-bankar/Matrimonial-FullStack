@@ -23,70 +23,73 @@ const SignUp = () => {
     messageDiv.textContent = message
   }
   
+  const backgroundImage = 'url("/bg-2.jpg")'
+
   return (
-    <div className=''>
-      <div className='w-3/12 mx-auto'>
-        <div className='text-center'>
-        <p>Create a Matrimonial Profile</p>
+    <div style={{backgroundImage,backgroundRepeat:'no-repeat', backgroundSize:'cover',height:'85vh'}}>
+      <div className='mx-auto shadow-lg rounded-3xl overflow-hidden relative top-24' style={{width:'32%'}}>
+        <div className='text-center  bg-orange-200 rounded-t-3xl'>
+        <p className='py-4 text-white text-xl font-bold'>Create a Matrimonial Profile</p>
         </div>
-          <div className='p-4'>
-            <p className='text-center'>Find your perfect match</p>
+          <div className='p-4 bg-yellow-100 bg-opacity-30'>
+            <p className='text-center py-4 text-xl font-bold text-white'>Find your perfect match</p>
               <form onSubmit={handleSubmit} className=''>
-                  <div className='flex'>
-                      <div>
-                        <label htmlFor="firstName">
+                  <div className='flex w-11/12'>
+                      <div className=''>
+                        <label htmlFor="firstName" className='text-white'>
                           <strong>First Name</strong>
                         </label><br />
                         <input 
                           type="text"
                           placeholder='Enter First Name'
                           name='firstName'
-                          className='border rounded p-2 w-10/12'
+                          className='border-none rounded p-3 w-full'
                           onChange={(e)=>setFirstName(e.target.value)}
                         />
                       </div>
 
-                      <div>
-                        <label htmlFor="lastName">
+                      <div className='ml-5'>
+                        <label htmlFor="lastName" className='text-white'>
                           <strong>Last Name</strong>
                         </label><br />
                         <input 
                           type="text"
                           placeholder='Enter Last Name'
                           name='lastName'
-                          className='border rounded p-2 w-10/12'
+                          className='border-none rounded p-3 w-full'
                           onChange={(e)=>setLastName(e.target.value)}
                         />
                       </div>
                   </div>
                       
-                      <div>
-                        <label htmlFor="email">
+                      <div className=''>
+                        <label htmlFor="email" className='text-white'>
                           <strong>Email</strong>
                         </label><br />
                         <input 
                           type="text"
                           placeholder='Enter Email'
                           name='email'
-                          className='border rounded p-2 w-11/12'
+                          className='border-none rounded p-3 w-full '
                           onChange={(e)=>setEmail(e.target.value)}
                         /> 
                       </div>
 
-                      <div>
-                        <label htmlFor="password">
+                      <div className=''>
+                        <label htmlFor="password" className='text-white'>
                           <strong>Password</strong>
                         </label><br />
                         <input 
                           type="password"
                           placeholder='Enter Password'
                           name='password'
-                          className='border rounded p-2 w-11/12'
+                          className='border-none rounded p-3 w-full'
                           onChange={(e)=>setPassword(e.target.value)}
                         /> 
                       </div>
-                        <button  type='submit' className='p-3 my-5 border-none w-11/12 rounded bg-orange-600'>Register</button>
-                        <div id='message'></div>
+                        <button  type='submit' className='p-3 my-3 border-none w-full rounded bg-orange-200 text-white font-bold'>Register</button><br />
+                        <button onClick={()=>navigate('/login')} className='p-3 my-3 border-none w-full rounded bg-orange-200 text-white font-bold'>Login</button>
+                        <div className='py-2 mx-2 text-justify text-md font-bold text-black' id='message'></div>
               </form>
           </div>
       </div>

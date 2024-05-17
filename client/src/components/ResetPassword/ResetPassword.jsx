@@ -29,24 +29,29 @@ const ResetPasswordForm = () => {
     }
   };
 
+  const backgroundImage = 'url("/bg-2.jpg")'
+
   return (
-    <div>
-      <h2>Reset Password</h2>
+    <div style={{backgroundImage,backgroundRepeat:'no-repeat', backgroundSize:'cover',height:'85vh'}}>
+      <div className='mx-auto shadow-lg rounded-3xl overflow-hidden relative top-24 p-4 bg-yellow-100 bg-opacity-30' style={{width:'32%'}}>
+      <h2 className='text-center font-bold text-xl text-white'>Reset Password</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="password">New Password:</label>
+          <label htmlFor="password" className='text-white font-bold'>New Password</label><br />
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className='border-none  rounded p-3 w-full mb-3'
             required
           />
         </div>
-        <button type="submit">Reset Password</button>
+        <button type="submit" className='p-3 my-3 border-none w-full rounded bg-orange-200 text-white font-bold'>Reset Password</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className='font-bold'>{message}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      </div>
     </div>
   );
 };

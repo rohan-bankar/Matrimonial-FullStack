@@ -35,38 +35,40 @@ const ChangePassword = () => {
         messageDiv.textContent = message;
     }
 
+    const backgroundImage = 'url("/bg-2.jpg")'
+
   return (
-    <div>
-        <div className='w-1/4 mx-auto p-5 rounded border'>
+    <div style={{backgroundImage,backgroundRepeat:'no-repeat', backgroundSize:'cover',height:'85vh'}}>
+        <div className='mx-auto shadow-lg rounded-3xl overflow-hidden relative top-24 p-4 bg-yellow-100 bg-opacity-30' style={{width:'32%'}}>
             <form onSubmit={handleSubmit}>
-                <h1>Change Password</h1>
+                <h1 className='text-center font-bold text-xl text-white'>Change Password</h1>
                 <div>
-                    <label htmlFor="oldPassword">
+                    <label htmlFor="oldPassword" className='text-white font-bold'>
                     <strong>Old Password</strong>
                     </label><br />
                     <input 
                         type="password"
                         placeholder='Enter Old Password'
                         name='oldPassword'
-                        className='border rounded p-2 w-full'
+                        className='border-none  rounded p-3 w-full mb-3'
                         onChange={(e)=> setOldPassword(e.target.value)}
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="newPassword">
+                    <label htmlFor="newPassword" className='text-white font-bold'>
                     <strong>New Password</strong>
                     </label><br />
                     <input 
                         type="password"
                         placeholder='Enter New Password'
                         name='newPassword'
-                        className='border rounded p-2 w-full'
+                        className='border-none  rounded p-3 w-full mb-3'
                         onChange={(e)=>setNewPassword(e.target.value)}
                     />
                 </div>
-                <button type='submit' className='p-3 mt-5 border-none w-11/12 rounded bg-orange-600'>Change Password</button>
-                <div id='message'></div>
+                <button type='submit' className='p-3 my-3 border-none w-full rounded bg-orange-200 text-white font-bold'>Change Password</button>
+                <div className=' mx-2 text-justify text-md font-bold text-black' id='message'></div>
             </form>
         </div>
     </div>

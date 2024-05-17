@@ -28,38 +28,42 @@ const Login = () => {
     const messageDiv = document.getElementById('message')
     messageDiv.textContent = message
   }
+
+  const backgroundImage = 'url("/bg-2.jpg")'
+
   return (
-    <div>
-        <div className='w-1/4 mx-auto p-5 rounded border'>
+    <div style={{backgroundImage,backgroundRepeat:'no-repeat', backgroundSize:'cover',height:'85vh'}}>
+        <div className='mx-auto shadow-lg rounded-3xl overflow-hidden relative top-24 p-4 bg-yellow-100 bg-opacity-30' style={{width:'32%'}}>
           <form onSubmit={handleSubmit}>
-            <h1 className='text-center'>Login</h1>
+            <h1 className='text-center font-bold text-xl text-white'>Login</h1>
             <div>
-              <label htmlFor='email'>
+              <label htmlFor='email' className='text-white font-bold'>
                   <strong>Email</strong>
               </label><br />
               <input 
                 type="text"
                 placeholder='Enter Email'
                 name='email'
-                className='border rounded p-2 w-full'
+                className='border-none  rounded p-3 w-full mb-3'
                 onChange={(e)=> setEmail(e.target.value)}
               />
             </div>
 
             <div>
-                <label htmlFor='password'>
+                <label htmlFor='password' className='text-white font-bold'>
                   <strong>Password</strong>
               </label><br />
               <input 
                 type="password"
                 placeholder='Enter password'
                 name='password'
-                className='border rounded p-2 w-full'
+                className='border-none  rounded p-3 w-full'
                 onChange={(e)=> setPassword(e.target.value)}
               />
             </div>
-            <button type='submit' className='p-3 my-5 border-none w-11/12 rounded bg-orange-600'>Login</button>
-              <div id='message'></div>
+            <button type='submit' className='p-3 my-3 border-none w-full rounded bg-orange-200 text-white font-bold'>Login</button>
+              <div className=' mx-2 text-justify text-md font-bold text-black' id='message'></div>
+              <div className='hover:text-white cursor-pointer mx-2 font-bold' onClick={()=>navigate('/forget-password-email')}>Forget Password?</div>
           </form>
         </div>
     </div>
