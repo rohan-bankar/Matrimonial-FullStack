@@ -13,273 +13,273 @@ const Profile = ({ data }) => {
         <div>
             {data && (
                 <div className='w-10/12 mx-auto'>
-                    <p className='mt-5'>Personal Information</p>
+                    <p className='mt-5 font-bold text-xl'>Personal Information</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>First Name</p>
-                            <p>{data.personalInformation.firstName}</p>
+                            <p className='title'>First Name</p>
+                            <p className='data'>{data.personalInformation.firstName}</p>
                         </div>
                         <div>
-                            <p>Middle Name</p>
-                            <p>{data.personalInformation.middleName}</p>
+                            <p className='title'>Middle Name</p>
+                            <p className='data'>{data.personalInformation.middleName}</p>
                         </div>
                         <div>
-                            <p>Last Name</p>
-                            <p>{data.personalInformation.lastName}</p>
+                            <p className='title'>Last Name</p>
+                            <p className='data'>{data.personalInformation.lastName}</p>
                         </div>
                         <div>
-                            <p>Gender</p>
-                            <p>{data.personalInformation.gender}</p>
+                            <p className='title'>Gender</p>
+                            <p className='data'>{data.personalInformation.gender}</p>
                         </div>
                         <div>
-                            <p>Birthday</p>
-                            <p>{formatDate(data.personalInformation.birthday)}</p>
+                            <p className='title'>Birthday</p>
+                            <p className='data'>{formatDate(data.personalInformation.birthday)}</p>
                         </div>
                         <div>
-                            <p>Birth Time</p>
-                            <p>{data.personalInformation.birthTime}</p>
+                            <p className='title'>Birth Time</p>
+                            <p className='data'>{data.personalInformation.birthTime}</p>
                         </div>
                         <div>
-                            <p>Contact</p>
-                            <p>{data.personalInformation.contact}</p>
+                            <p className='title'>Contact</p>
+                            <p className='data'>{data.personalInformation.contact}</p>
                         </div>
                         <div>
-                            <p>Birth Place</p>
-                            <p>{data.personalInformation.birthPlace}</p>
+                            <p className='title'>Birth Place</p>
+                            <p className='data'>{data.personalInformation.birthPlace}</p>
                         </div>
                         <div>
-                            <p>Native Place</p>
-                            <p>{data.personalInformation.nativePlace}</p>
+                            <p className='title'>Native Place</p>
+                            <p className='data'>{data.personalInformation.nativePlace}</p>
                         </div>
                         <div>
-                            <p>Religion</p>
-                            <p>{data.personalInformation.religion}</p>
+                            <p className='title'>Religion</p>
+                            <p className='data'>{data.personalInformation.religion}</p>
                         </div>
                         <div>
-                            <p>Cast</p>
-                            <p>{data.personalInformation.cast}</p>
+                            <p className='title'>Cast</p>
+                            <p className='data'>{data.personalInformation.cast}</p>
                         </div>
                         <div>
-                            <p>Figure</p>
-                            <p>{data.personalInformation.figure}</p>
+                            <p className='title'>Figure</p>
+                            <p className='data'>{data.personalInformation.figure}</p>
                         </div>
                         <div>
-                            <p>Weight</p>
-                            <p>{data.personalInformation.weight}</p>
+                            <p className='title'>Weight</p>
+                            <p className='data'>{data.personalInformation.weight}</p>
                         </div>
                         <div>
-                            <p>Height</p>
-                            <p>{data.personalInformation.height}</p>
+                            <p className='title'>Height</p>
+                            <p className='data'>{data.personalInformation.height}</p>
                         </div>
                         <div>
-                            <p>Complexion</p>
-                            <p>{data.personalInformation.complexion}</p>
+                            <p className='title'>Complexion</p>
+                            <p className='data'>{data.personalInformation.complexion}</p>
                         </div>
                         <div>
-                            <p>Blood Group</p>
-                            <p>{data.personalInformation.bloodGroup}</p>
+                            <p className='title'>Blood Group</p>
+                            <p className='data'>{data.personalInformation.bloodGroup}</p>
                         </div>
                         <div>
-                            <p>Marital Status</p>
-                            <p>{data.personalInformation.maritalStatus}</p>
+                            <p className='title'>Marital Status</p>
+                            <p className='data'>{data.personalInformation.maritalStatus}</p>
                         </div>
                     </div>
-                    <hr />
+                    <hr/>
 
-                    <p className='mt-5'>Language Known</p>
+                    <p className='mt-5 font-bold text-xl'>Language Known</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>First Language</p>
-                            <p>{data.languagesKnown.language1}</p>
+                            <p className='title'>First Language</p>
+                            <p className='data'>{data.languagesKnown.language1}</p>
                         </div>
                         <div>
-                            <p>Second Language</p>
-                            <p>{data.languagesKnown.language2}</p>
+                            <p className='title'>Second Language</p>
+                            <p className='data'>{data.languagesKnown.language2}</p>
                         </div>
                         <div>
-                            <p>Third Language</p>
-                            <p>{data.languagesKnown.language3}</p>
+                            <p className='title'>Third Language</p>
+                            <p className='data'>{data.languagesKnown.language3}</p>
                         </div>
                     </div>
-                    <hr />
+                    <h />
 
-                    <p className='mt-5'>Professional Details</p>
+                    <p className='mt-5 font-bold text-xl'>Professional Details</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>Profession Type</p>
-                            <p>{data.professionalDetails.professionType}</p>
+                            <p className='title'>Profession Type</p>
+                            <p className='data'>{data.professionalDetails.professionType}</p>
                         </div>
                         <div>
-                            <p>Organization Name</p>
-                            <p>{data.professionalDetails.serviceName}</p>
+                            <p className='title'>Organization Name</p>
+                            <p className='data'>{data.professionalDetails.serviceName}</p>
                         </div>
                         <div>
-                            <p>Organization Address</p>
-                            <p>{data.professionalDetails.serviceAddress}</p>
+                            <p className='title'>Organization Address</p>
+                            <p className='data'>{data.professionalDetails.serviceAddress}</p>
                         </div>
                         <div>
-                            <p>Designation</p>
-                            <p>{data.professionalDetails.serviceDesignation}</p>
+                            <p className='title'>Designation</p>
+                            <p className='data'>{data.professionalDetails.serviceDesignation}</p>
                         </div>
                         <div>
-                            <p>Salary</p>
-                            <p>{data.professionalDetails.serviceSalary}</p>
+                            <p className='title'>Salary</p>
+                            <p className='data'>{data.professionalDetails.serviceSalary}</p>
                         </div>
                     </div>
-                    <hr />
+                    <hr/>
 
-                    <p className='mt-5'>Education Details</p>
+                    <p className='mt-5 font-bold text-xl'>Education Details</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>Education Type</p>
-                            <p>{data.educationDetails.educationType}</p>
+                            <p className='title'>Education Type</p>
+                            <p className='data'>{data.educationDetails.educationType}</p>
                         </div>
                         <div>
-                            <p>College Name</p>
-                            <p>{data.educationDetails.graduationCollegeName}</p>
+                            <p className='title'>College Name</p>
+                            <p className='data'>{data.educationDetails.graduationCollegeName}</p>
                         </div>
                         <div>
-                            <p>Course Name</p>
-                            <p>{data.educationDetails.graduationCourseName}</p>
+                            <p className='title'>Course Name</p>
+                            <p className='data'>{data.educationDetails.graduationCourseName}</p>
                         </div>
                         <div>
-                            <p>Marks</p>
-                            <p>{data.educationDetails.graduationMarks}</p>
+                            <p className='title'>Marks</p>
+                            <p className='data'>{data.educationDetails.graduationMarks}</p>
                         </div>
                     </div>
-                    <hr />
+                    <h/>
 
-                    <p className='mt-5'>Father Details</p>
+                    <p className='mt-5 font-bold text-xl'>Father Details</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>First Name</p>
-                            <p>{data.fatherDetails.fatherFirstName}</p>
+                            <p className='title'>First Name</p>
+                            <p className='data'>{data.fatherDetails.fatherFirstName}</p>
                         </div>
                         <div>
-                            <p>Middle Name</p>
-                            <p>{data.fatherDetails.fatherMiddleName}</p>
+                            <p className='title'>Middle Name</p>
+                            <p className='data'>{data.fatherDetails.fatherMiddleName}</p>
                         </div>
                         <div>
-                            <p>Last Name</p>
-                            <p>{data.fatherDetails.fatherLastName}</p>
+                            <p className='title'>Last Name</p>
+                            <p className='data'>{data.fatherDetails.fatherLastName}</p>
                         </div>
                         <div>
-                            <p>Status</p>
-                            <p>{data.fatherDetails.fatherStatus}</p>
+                            <p className='title'>Status</p>
+                            <p className='data'>{data.fatherDetails.fatherStatus}</p>
                         </div>
                         <div>
-                            <p>Contact</p>
-                            <p>{data.fatherDetails.fatherContact}</p>
+                            <p className='title'>Contact</p>
+                            <p className='data'>{data.fatherDetails.fatherContact}</p>
                         </div>
                         <div>
-                            <p>Profession</p>
-                            <p>{data.fatherDetails.fatherProfession}</p>
+                            <p className='title'>Profession</p>
+                            <p className='data'>{data.fatherDetails.fatherProfession}</p>
                         </div>
                     </div>
-                    <hr />
+                    <hr/>
 
-                    <p className='mt-5'>Mother Details</p>
+                    <p className='mt-5 font-bold text-xl'>Mother Details</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>First Name</p>
-                            <p>{data.motherDetails.motherFirstName}</p>
+                            <p className='title'>First Name</p>
+                            <p className='data'>{data.motherDetails.motherFirstName}</p>
                         </div>
                         <div>
-                            <p>Last Name</p>
-                            <p>{data.motherDetails.motherLastName}</p>
+                            <p className='title'>Last Name</p>
+                            <p className='data'>{data.motherDetails.motherLastName}</p>
                         </div>
                         <div>
-                            <p>Status</p>
-                            <p>{data.motherDetails.motherStatus}</p>
+                            <p className='title'>Status</p>
+                            <p className='data'>{data.motherDetails.motherStatus}</p>
                         </div>
                         <div>
-                            <p>Contact</p>
-                            <p>{data.motherDetails.motherContact}</p>
+                            <p className='title'>Contact</p>
+                            <p className='data'>{data.motherDetails.motherContact}</p>
                         </div>
                         <div>
-                            <p>Profession</p>
-                            <p>{data.motherDetails.motherProfession}</p>
+                            <p className='title'>Profession</p>
+                            <p className='data'>{data.motherDetails.motherProfession}</p>
                         </div>
                     </div>
-                    <hr />
+                    <hr/>
 
-                    <p className='mt-5'>Maternal Surname</p>
+                    <p className='mt-5 font-bold text-xl'>Maternal Surname</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>Surname</p>
-                            <p>{data.maternalSurname.surName}</p>
+                            <p className='title'>Surname</p>
+                            <p className='data'>{data.maternalSurname.surName}</p>
                         </div>
                     </div>
-                    <hr />
+                    <hr/>
 
-                    <p className='mt-5'>Relatives Surname</p>
+                    <p className='mt-5 font-bold text-xl'>Relatives Surname</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>Surname</p>
-                            <p>{data.relativesSurname.surName1}</p>
+                            <p className='title'>Surname</p>
+                            <p className='data'>{data.relativesSurname.surName1}</p>
                         </div>
                         <div>
-                            <p>Surname</p>
-                            <p>{data.relativesSurname.surName2}</p>
+                            <p className='title'>Surname</p>
+                            <p className='data'>{data.relativesSurname.surName2}</p>
                         </div>
                         <div>
-                            <p>Surname</p>
-                            <p>{data.relativesSurname.surName3}</p>
+                            <p className='title'>Surname</p>
+                            <p className='data'>{data.relativesSurname.surName3}</p>
                         </div>
                     </div>
-                    <hr />
+                    <hr/>
 
-                    <p className='mt-5'>Spouse Preference</p>
+                    <p className='mt-5 font-bold text-xl'>Spouse Preference</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>Complexion</p>
-                            <p>{data.spousePreference.spouseComplexion}</p>
+                            <p className='title'>Complexion</p>
+                            <p className='data'>{data.spousePreference.spouseComplexion}</p>
                         </div>
                         <div>
-                            <p>Height</p>
-                            <p>{data.spousePreference.spouseHeight}</p>
+                            <p className='title'>Height</p>
+                            <p className='data'>{data.spousePreference.spouseHeight}</p>
                         </div>
                         <div>
-                            <p>Physique</p>
-                            <p>{data.spousePreference.spousePhysique}</p>
+                            <p className='title'>Physique</p>
+                            <p className='data'>{data.spousePreference.spousePhysique}</p>
                         </div>
                     </div>
-                    <hr />
+                    <hr/>
 
-                    <p className='mt-5'>Other Details</p>
+                    <p className='mt-5 font-bold text-xl'>Other Details</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>About Self</p>
-                            <p>{data.otherDetails.aboutSelf}</p>
+                            <p className='title'>About Self</p>
+                            <p className='data'>{data.otherDetails.aboutSelf}</p>
                         </div>
                         <div>
-                            <p>Food Preference</p>
-                            <p>{data.otherDetails.foodPreference}</p>
+                            <p className='title'>Food Preference</p>
+                            <p className='data'>{data.otherDetails.foodPreference}</p>
                         </div>
                     </div>
-                    <hr />
+                    <hr/>
 
-                    <p className='mt-5'>Contact Information</p>
+                    <p className='mt-5 font-bold text-xl'>Contact Information</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
-                            <p>Country</p>
-                            <p>{data.contactInformation.country}</p>
+                            <p className='title'>Country</p>
+                            <p className='data'>{data.contactInformation.country}</p>
                         </div>
                         <div>
-                            <p>State</p>
-                            <p>{data.contactInformation.state}</p>
+                            <p className='title'>State</p>
+                            <p className='data'>{data.contactInformation.state}</p>
                         </div>
                         <div>
-                            <p>City</p>
-                            <p>{data.contactInformation.city}</p>
+                            <p className='title'>City</p>
+                            <p className='data'>{data.contactInformation.city}</p>
                         </div>
                         <div>
-                            <p>Village Town</p>
-                            <p>{data.contactInformation.villageTown}</p>
+                            <p className='title'>Village Town</p>
+                            <p className='data'>{data.contactInformation.villageTown}</p>
                         </div>
                         <div>
-                            <p>Pin</p>
-                            <p>{data.contactInformation.pin}</p>
+                            <p className='title'>Pin</p>
+                            <p className='data'>{data.contactInformation.pin}</p>
                         </div>
                     </div>
                 </div>

@@ -27,12 +27,6 @@ const EmailVerify = () => {
   
   return (
     <div style={{backgroundImage,backgroundRepeat:'no-repeat', backgroundSize:'cover',height:'85vh'}}>
-      {/* <h1>Email Verification</h1>
-      {verificationStatus === 'Email verified successfully' ? (
-        <p>Your email has been successfully verified.</p>
-      ) : (
-        <p>{verificationStatus}</p>
-      )} */}
       <div className='mx-auto shadow-lg rounded-3xl overflow-hidden relative top-24 p-4 bg-yellow-100 bg-opacity-30' style={{width:'32%'}}>
         <p className='text-center font-bold text-xl'>Email is verify successfully</p><br />
         <button onClick={()=>navigate('/login')} className='p-3 my-3 border-none w-full rounded bg-orange-200 text-white font-bold'>Login</button>

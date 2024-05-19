@@ -195,11 +195,11 @@ function Form() {
     }
 
   return (
-    <div className='bg-gray-400'>
+    <div className='bg-orange-200'>
         <div className='w-10/12 mx-auto'>
-            <h1>User Information Form</h1>
+            <h1 className='text-center text-3xl text-white font-bold'>User Information Form</h1>
             <form onSubmit={handleSubmit}>
-                    <p className='mt-5'>Personal Information</p>
+                    <p className='mt-5 font-bold text-xl'>Personal Information</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="firstName">First Name</label><br />
@@ -389,7 +389,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>Language Known</p>
+                <p className='mt-5 font-bold text-xl'>Language Known</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="language1">Language</label><br />
@@ -426,7 +426,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>Professional Details</p>
+                <p className='mt-5 font-bold text-xl'>Professional Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="professionType">Profession Type</label>
@@ -481,7 +481,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>Education Details</p>
+                <p className='mt-5 font-bold text-xl'>Education Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="educationType">Education Type</label>
@@ -529,7 +529,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>Father Details</p>
+                <p className='mt-5 font-bold text-xl'>Father Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                 <div>
                     <label htmlFor="fatherFirstName">First Name</label>
@@ -599,7 +599,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>Mother Details</p>
+                <p className='mt-5 font-bold text-xl'>Mother Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                 <div>
                     <label htmlFor="motherFirstName">First Name</label>
@@ -658,7 +658,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>Maternal Surname</p>
+                <p className='mt-5 font-bold text-xl'>Maternal Surname</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                 <div>
                     <label htmlFor="surName">Surname</label>
@@ -673,7 +673,7 @@ function Form() {
                 </div>
                 <hr />
 
-                <p className='mt-5'>Relatives Surname</p>
+                <p className='mt-5 font-bold text-xl'>Relatives Surname</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                 <div>
                     <label htmlFor="surName1">Surname</label>
@@ -782,7 +782,7 @@ function Form() {
                 </div>
                 <hr /> */}
 
-                <p className='mt-5'>Spouse Preference</p>
+                <p className='mt-5 font-bold text-xl'>Spouse Preference</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="spouseComplexion">Complexion</label>
@@ -819,7 +819,7 @@ function Form() {
                 </div>
                 <hr />
                 
-                <p className='mt-5'>Other Details</p>
+                <p className='mt-5 font-bold text-xl'>Other Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="aboutSelf">About Self</label>
@@ -845,7 +845,7 @@ function Form() {
                 </div>
                 <hr />
                 
-                <p className='mt-5'>Contact Information</p>
+                <p className='mt-5 font-bold text-xl'>Contact Information</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="country">Country</label>
@@ -903,7 +903,7 @@ function Form() {
                     </div>
                 </div>
 
-            <button type='submit' className='p-2 border-none rounded bg-orange-500 my-2'>Submit</button>
+            <button type='submit' className='p-2 border-none rounded bg-orange-400 text-white font-bold my-2'>Submit</button>
         </form>
 
         </div>
