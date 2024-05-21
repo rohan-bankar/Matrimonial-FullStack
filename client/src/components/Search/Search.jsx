@@ -79,7 +79,7 @@ const SearchProfile = () => {
     };
 
     return (
-    <div className='relative'>
+    <div className='relative bg-orange-200 h-screen'>
         <form onSubmit={handleSearch}>
             <div className=''>
             <input

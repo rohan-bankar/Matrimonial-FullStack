@@ -16,6 +16,7 @@ import Form from './components/Form/Form.jsx'
 import Profile from './components/ProfilePage/ProfilePage.jsx'
 import Search from './components/Search/Search.jsx'
 import AdminDashBoard from './components/AdminDashBoard/AdminDashBoard.jsx'
+// import { UserProvider } from './components/UserContext/UserContext.jsx'
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout/>}>
     <Route path='/' element={<SignUp/>}/>
@@ -36,6 +37,8 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    {/* <UserProvider> */}
+      <RouterProvider router={router}/>
+    {/* </UserProvider> */}
   </React.StrictMode>,
 )

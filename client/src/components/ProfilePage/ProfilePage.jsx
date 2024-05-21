@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Profile from '../Profile/Profile.jsx';
-
+import { useNavigate } from 'react-router-dom';
 const ProfilePage = () => {
     const [data, setData] = useState(null);
-
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -24,8 +24,9 @@ const ProfilePage = () => {
     }, []);
 
     return (
-        <div>
-            {data ? <Profile data={data} /> : <p>Loading...</p>}
+        <div className='h-screen'>
+            {data ? <Profile data={data} /> : <p>Fill Form.....</p>}
+            <button type='button' onClick={()=>navigate('/form')}>Click here</button>
         </div>
     );
 };

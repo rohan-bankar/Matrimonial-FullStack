@@ -10,10 +10,10 @@ const formatDate = (dateString) => {
 
 const Profile = ({ data }) => {
     return (
-        <div>
+        <div className='bg-orange-200'>
             {data && (
                 <div className='w-10/12 mx-auto'>
-                    <p className='mt-5 font-bold text-xl'>Personal Information</p>
+                    <p className='font-bold text-xl pt-5'>Personal Information</p>
                     <div className='grid grid-cols-3 gap-5 my-5'>
                         <div>
                             <p className='title'>First Name</p>
@@ -260,7 +260,7 @@ const Profile = ({ data }) => {
                     <hr/>
 
                     <p className='mt-5 font-bold text-xl'>Contact Information</p>
-                    <div className='grid grid-cols-3 gap-5 my-5'>
+                    <div className='grid grid-cols-3 gap-5 py-5'>
                         <div>
                             <p className='title'>Country</p>
                             <p className='data'>{data.contactInformation.country}</p>

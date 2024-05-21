@@ -189,6 +189,7 @@ function Form() {
                 }
             });
             console.log(response.data);
+            navigate('/home')
         } catch (error) {
             console.error('Error saving user info:',error)
         }
@@ -233,15 +234,20 @@ function Form() {
                     className='border rounded w-full h-10'
                     />
                     </div>
+                    
                     <div>
                     <label htmlFor="gender">Gender</label><br />
-                    <input
-                    type='text'
-                    name='gender'
-                    value={formData.personalInformation.gender}
-                    onChange={handleChange}
-                    className='border rounded w-full h-10'
-                    />
+                    <select
+                        name="gender"
+                        value={formData.personalInformation.gender}
+                        onChange={handleChange}
+                        className="border rounded w-full h-10"
+                    >
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
                     </div>
 
                     <div>
@@ -323,13 +329,21 @@ function Form() {
 
                     <div>
                     <label htmlFor="figure">Figure</label><br />
-                    <input
-                    type='text'
+                    <select
                     name='figure'
                     value={formData.personalInformation.figure}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                    <option value="">Select</option>
+                    <option value="Average">Average</option>
+                    <option value="Athletic">Athletic</option>
+                    <option value="Slim">Slim</option>
+                    <option value="Fit">Fit</option>
+                    <option value="Muscular">Muscular</option>
+                    <option value="Curvy">Curvy</option>
+                    <option value="Slightly Overweight">Slightly Overweight</option>
+                    </select>
                     </div>
 
                     <div>
@@ -356,35 +370,55 @@ function Form() {
 
                     <div>
                     <label htmlFor="complexion">Complexion</label><br />
-                    <input
-                    type='text'
+                    <select
                     name='complexion'
                     value={formData.personalInformation.complexion}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />            
+                    >
+                        <option value="">Select</option>
+                        <option value="Very Dark">Very Dark</option>
+                        <option value="Dark">Dark</option>
+                        <option value="Whitish">Whitish</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Very Fair">Very Fair</option>
+                    </select>            
                     </div>    
 
                     <div>
                     <label htmlFor="bloodGroup">Blood Group</label><br />
-                    <input
-                    type='text'
+                    <select
                     name='bloodGroup'
                     value={formData.personalInformation.bloodGroup}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="O+">O+</option>
+                        <option value="O">O</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB">AB</option>
+                    </select>
                     </div>
 
                     <div>
                     <label htmlFor="maritalStatus">Marital Status</label><br />
-                    <input
-                    type='text'
+                    <select
                     name='maritalStatus'
                     value={formData.personalInformation.maritalStatus}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                        <option value="">Select</option>
+                        <option value="Single">Single</option>
+                        <option value="Widow">Widow</option>
+                        <option value="Widower">Widower</option>
+                        <option value="Divorce">Divorce</option>
+                    </select>
                     </div>
                 </div>
                 <hr />
@@ -393,35 +427,127 @@ function Form() {
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="language1">Language</label><br />
-                    <input
-                    type='text'
+                    <select
                     name='language1'
                     value={formData.languagesKnown.language1}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />  
+                    > 
+                     <option value="">Select</option>
+                    {[
+                    'Assamese',
+                    'Bengali',
+                    'Bodo',
+                    'Dogri',
+                    'English',
+                    'Gujarati',
+                    'Hindi',
+                    'Kannada',
+                    'Kashmiri',
+                    'Konkani',
+                    'Maithili',
+                    'Malayalam',
+                    'Marathi',
+                    'Meitei',
+                    'Nepali',
+                    'Odia',
+                    'Punjabi',
+                    'Sanskrit',
+                    'Santali',
+                    'Sandhi',
+                    'Tamil',
+                    'Telugu',
+                    'Urdu'
+                    ].map((language) => (
+                    <option key={language} value={language}>
+                        {language}
+                    </option>
+                    ))}
+                    </select>
+                    
                     </div>
 
                     <div>
                     <label htmlFor="language2">Language</label><br />
-                    <input
-                    type='text'
+                    <select
                     name='language2'
                     value={formData.languagesKnown.language2}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />  
+                    >
+                      <option value="">Select</option>
+                    {[
+                    'Assamese',
+                    'Bengali',
+                    'Bodo',
+                    'Dogri',
+                    'English',
+                    'Gujarati',
+                    'Hindi',
+                    'Kannada',
+                    'Kashmiri',
+                    'Konkani',
+                    'Maithili',
+                    'Malayalam',
+                    'Marathi',
+                    'Meitei',
+                    'Nepali',
+                    'Odia',
+                    'Punjabi',
+                    'Sanskrit',
+                    'Santali',
+                    'Sandhi',
+                    'Tamil',
+                    'Telugu',
+                    'Urdu'
+                    ].map((language) => (
+                    <option key={language} value={language}>
+                        {language}
+                    </option>
+                    ))}
+                    </select>               
                     </div>
 
                     <div>
                     <label htmlFor="language3">Language</label><br />
-                    <input
-                    type='text'
+                    <select
                     name='language3'
                     value={formData.languagesKnown.language3}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />  
+                    >
+                        <option value="">Select</option>
+                    {[
+                    'Assamese',
+                    'Bengali',
+                    'Bodo',
+                    'Dogri',
+                    'English',
+                    'Gujarati',
+                    'Hindi',
+                    'Kannada',
+                    'Kashmiri',
+                    'Konkani',
+                    'Maithili',
+                    'Malayalam',
+                    'Marathi',
+                    'Meitei',
+                    'Nepali',
+                    'Odia',
+                    'Punjabi',
+                    'Sanskrit',
+                    'Santali',
+                    'Sandhi',
+                    'Tamil',
+                    'Telugu',
+                    'Urdu',
+                    ''
+                    ].map((language) => (
+                    <option key={language} value={language}>
+                        {language}
+                    </option>
+                    ))}
+                    </select>  
                     </div>
                 </div>
                 <hr />
@@ -566,13 +692,16 @@ function Form() {
 
                     <div>
                     <label htmlFor="fatherStatus">Status</label>
-                    <input
-                    type='text'
+                    <select
                     name='fatherStatus'
                     value={formData.fatherDetails.fatherStatus}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                        <option value="">Select</option>
+                        <option value="alive">alive</option>
+                        <option value="expired">expired</option>
+                    </select>
                     </div>
 
                     <div>
@@ -588,13 +717,17 @@ function Form() {
 
                     <div>
                     <label htmlFor="fatherProfession">Profession</label>
-                    <input
-                    type='text'
+                    <select
                     name='fatherProfession'
                     value={formData.fatherDetails.fatherProfession}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                        <option value="">Select</option>
+                        <option value="Service">Service</option>
+                        <option value="Business">Business</option>
+                        <option value="Retired">Retired</option>
+                    </select>
                     </div>
                 </div>
                 <hr />
@@ -625,13 +758,16 @@ function Form() {
 
                     <div>
                     <label htmlFor="motherStatus">Status</label>
-                    <input
-                    type='text'
+                    <select
                     name='motherStatus'
                     value={formData.motherDetails.motherStatus}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                        <option value="">Select</option>
+                        <option value="alive">alive</option>
+                        <option value="expired">expired</option>
+                    </select>
                     </div>
 
                     <div>
@@ -647,13 +783,18 @@ function Form() {
 
                     <div>
                     <label htmlFor="motherProfession">Profession</label>
-                    <input
-                    type='text'
+                    <select
                     name='motherProfession'
                     value={formData.motherDetails.motherProfession}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                        <option value="">Select</option>
+                        <option value="Service">Service</option>
+                        <option value="Business">Business</option>
+                        <option value="Retired">Retired</option>
+                        <option value="House Wife">House Wife</option>
+                    </select>
                     </div>
                 </div>
                 <hr />
@@ -786,13 +927,27 @@ function Form() {
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
                     <label htmlFor="spouseComplexion">Complexion</label>
-                    <input
-                    type='text'
+                    <select
                     name='spouseComplexion'
                     value={formData.spousePreference.spouseComplexion}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                    <option value="">Select</option>
+                    {[
+                    'Very Dark',
+                    'Dark',
+                    'Whitish',
+                    'Fair',
+                    'Very Fair',
+                    ''
+                    ].map((complexion) => (
+                    <option key={complexion} value={complexion}>
+                        {complexion}
+                    </option>
+                    ))}
+                    </select>  
+
                     </div>
 
                     <div>
@@ -808,13 +963,28 @@ function Form() {
 
                     <div>
                     <label htmlFor="spousePhysique">Physique</label>
-                    <input
-                    type='text'
+                    <select
                     name='spousePhysique'
                     value={formData.spousePreference.spousePhysique}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                    <option value="">Select</option>
+                    {[
+                        'Average',
+                        'Athletic',
+                        'Slim',
+                        'Fit',
+                        'Muscular',
+                        'Curvy',
+                        'Slightly Overweight',
+                        ''
+                    ].map((Physique) => (
+                    <option key={Physique} value={Physique}>
+                        {Physique}
+                    </option>
+                    ))}
+                    </select>
                     </div>
                 </div>
                 <hr />
@@ -834,13 +1004,26 @@ function Form() {
 
                     <div>
                     <label htmlFor="foodPreference">Food Preference</label>
-                    <input
-                    type='text'
+                    <select
                     name='foodPreference'
                     value={formData.otherDetails.foodPreference}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                    <option value="">Select</option>
+                    {[
+                       'Pure Veg',
+                       'Mostly Veg',
+                       'Veg & Non-veg',
+                       'Mostly Non-veg',
+                       'Pure Non-veg',
+                       '' 
+                    ].map((food) => (
+                    <option key={food} value={food}>
+                        {food}
+                    </option>
+                    ))}
+                    </select>
                     </div>
                 </div>
                 <hr />
