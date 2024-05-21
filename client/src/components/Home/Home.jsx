@@ -63,7 +63,7 @@ const Home = () => {
   return (
     <div className='h-screen bg-orange-200 relative' style={{backgroundImage,backgroundRepeat:'no-repeat', backgroundSize:'cover'}}>
         <button className='border-2 border-orange-300 p-2 rounded-full absolute top-5 left-10 z-50' style={{color:'orange'}} onClick={()=>navigate('/form')}><FontAwesomeIcon icon="fa-solid fa-user-plus" size="2xl" /></button><br />
-        <div className='w-44 text-center absolute z-50 right-10'>
+        <div className='w-44 text-center absolute z-10 right-10'>
                 {profile.avatar ? (
                     <img
                         src={profile.avatar}

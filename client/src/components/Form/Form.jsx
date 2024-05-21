@@ -30,36 +30,16 @@ function Form() {
            },
            professionalDetails:{
             professionType:'',
-            serviceName:'',
-            serviceAddress:'',
-            serviceDesignation:'',
-            serviceSalary:'',
-            businessName:'',
-            businessAddress:'',
-            businessDesignation:'',
-            businessIncome:''
+            organizationName:'',
+            organizationAddress:'',
+            Designation:'',
+            Salary:'',
             },
             educationDetails:{
                 educationType:'',
-                tenthSchoolName:'',
-                tenthMarks:'',
-                diplomaCollegeName:'',
-                diplomaCourseName:'',
-                diplomaMarks:'',
-                twelfthCollegeName:'',
-                twelfthCourseName:'',
-                twelfthMarks:'',
-                graduationCollegeName:'',
-                graduationCourseName:'',
-                graduationMarks:'',
-                postGraduationCollegeName:'',
-                postGraduationCourseName:'',
-                postGraduationSpecialization:'',
-                postGraduationMarks:'',
-                phdCollegeName:'',
-                phdCourseName:'',
-                phdSpecialization:'',
-                phdMarks:''
+                CollegeName:'',
+                CourseName:'',
+                Marks:'',
             },
             fatherDetails:{
                 fatherFirstName:'',
@@ -83,20 +63,6 @@ function Form() {
             surName1:'',
             surName2:'',
             surName3:''
-            },
-            elderSiblings:{
-                elderSiblingOne:{
-                    elderSiblingOneFirstName:'',
-                    elderSiblingOneLastName:'',
-                    elderSiblingOneMaritalStatus:'',
-                },
-            },
-            youngerSiblings:{
-                youngerSiblingOne:{
-                    youngerSiblingOneFirstName:'',
-                    youngerSiblingOneLastName:'',
-                    youngerSiblingOneMaritalStatus:'',
-                },
             },
             spousePreference:{
                 spouseComplexion:'',
@@ -152,18 +118,6 @@ function Form() {
                 ...formData.relativesSurname,
                 [name]:value
             },
-            elderSiblings:{
-                ...formData.elderSiblings,
-                elderSiblingOne:{
-                    [name]:value
-                }
-            },
-            youngerSiblings:{
-                ...formData.youngerSiblings,
-                youngerSiblingOne:{
-                    [name]:value
-                }
-            },
             spousePreference:{
                 ...formData.spousePreference,
                 [name]:value
@@ -203,7 +157,7 @@ function Form() {
                     <p className='mt-5 font-bold text-xl'>Personal Information</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
-                    <label htmlFor="firstName">First Name</label><br />
+                    <label htmlFor="firstName">First Name <span className='text-red-600'>*</span></label><br />
                     <input
                     type='text'
                     name='firstName'
@@ -214,7 +168,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="middleName">Middle Name</label><br />
+                    <label htmlFor="middleName">Middle Name <span className='text-red-600'>*</span></label><br />
                     <input
                     type='text'
                     name='middleName'
@@ -225,7 +179,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="lastName">Last Name</label><br />
+                    <label htmlFor="lastName">Last Name <span className='text-red-600'>*</span></label><br />
                     <input
                     type='text'
                     name='lastName'
@@ -236,7 +190,7 @@ function Form() {
                     </div>
                     
                     <div>
-                    <label htmlFor="gender">Gender</label><br />
+                    <label htmlFor="gender">Gender <span className='text-red-600'>*</span></label><br />
                     <select
                         name="gender"
                         value={formData.personalInformation.gender}
@@ -251,7 +205,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="birthday">Birthday</label><br />
+                    <label htmlFor="birthday">Birthday <span className='text-red-600'>*</span></label><br />
                     <input
                     type='date'
                     name='birthday'
@@ -262,7 +216,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="birthTime">Birth Time</label><br />
+                    <label htmlFor="birthTime">Birth Time <span className='text-red-600'>*</span></label><br />
                     <input
                     type='text'
                     name='birthTime'
@@ -273,7 +227,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="contact">Contact</label><br />
+                    <label htmlFor="contact">Contact <span className='text-red-600'>*</span></label><br />
                     <input
                     type='number'
                     name='contact'
@@ -284,7 +238,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="birthPlace">Birth Place</label><br />
+                    <label htmlFor="birthPlace">Birth Place <span className='text-red-600'>*</span></label><br />
                     <input
                     type='text'
                     name='birthPlace'
@@ -295,7 +249,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="nativePlace">Native Place</label><br />
+                    <label htmlFor="nativePlace">Native Place <span className='text-red-600'>*</span></label><br />
                     <input
                     type='text'
                     name='nativePlace'
@@ -306,7 +260,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="religion">Religion</label><br />
+                    <label htmlFor="religion">Religion <span className='text-red-600'>*</span></label><br />
                     <input
                     type='text'
                     name='religion'
@@ -317,7 +271,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="cast">Cast</label><br />
+                    <label htmlFor="cast">Cast <span className='text-red-600'>*</span></label><br />
                     <input
                     type='text'
                     name='cast'
@@ -328,7 +282,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="figure">Figure</label><br />
+                    <label htmlFor="figure">Figure <span className='text-red-600'>*</span></label><br />
                     <select
                     name='figure'
                     value={formData.personalInformation.figure}
@@ -347,7 +301,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="weight">Weight</label><br />
+                    <label htmlFor="weight">Weight <span className='text-red-600'>*</span></label><br />
                     <input
                     type='number'
                     name='weight'
@@ -358,7 +312,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="height">Height</label><br />
+                    <label htmlFor="height">Height <span className='text-red-600'>*</span></label><br />
                     <input
                     type='number'
                     name='height'
@@ -369,7 +323,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="complexion">Complexion</label><br />
+                    <label htmlFor="complexion">Complexion <span className='text-red-600'>*</span></label><br />
                     <select
                     name='complexion'
                     value={formData.personalInformation.complexion}
@@ -386,7 +340,7 @@ function Form() {
                     </div>    
 
                     <div>
-                    <label htmlFor="bloodGroup">Blood Group</label><br />
+                    <label htmlFor="bloodGroup">Blood Group <span className='text-red-600'>*</span></label><br />
                     <select
                     name='bloodGroup'
                     value={formData.personalInformation.bloodGroup}
@@ -406,7 +360,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="maritalStatus">Marital Status</label><br />
+                    <label htmlFor="maritalStatus">Marital Status <span className='text-red-600'>*</span><span className='text-red-600'>*</span></label><br />
                     <select
                     name='maritalStatus'
                     value={formData.personalInformation.maritalStatus}
@@ -426,7 +380,7 @@ function Form() {
                 <p className='mt-5 font-bold text-xl'>Language Known</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
-                    <label htmlFor="language1">Language</label><br />
+                    <label htmlFor="language1">Language <span className='text-red-600'>*</span></label><br />
                     <select
                     name='language1'
                     value={formData.languagesKnown.language1}
@@ -468,7 +422,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="language2">Language</label><br />
+                    <label htmlFor="language2">Language <span className='text-red-600'>*</span></label><br />
                     <select
                     name='language2'
                     value={formData.languagesKnown.language2}
@@ -555,51 +509,54 @@ function Form() {
                 <p className='mt-5 font-bold text-xl'>Professional Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
-                    <label htmlFor="professionType">Profession Type</label>
-                    <input
-                    type='text'
+                    <label htmlFor="professionType">Profession Type <span className='text-red-600'>*</span></label>
+                    <select
                     name='professionType'
                     value={formData.professionalDetails.professionType}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                    <option value="">Select</option>
+                    <option value="Service">Service</option>
+                    <option value="Business">Business</option>
+                    </select>
                     </div>
                     <div>
-                    <label htmlFor="serviceName">Organization Name</label>
+                    <label htmlFor="organizationName">Organization Name</label>
                     <input
                     type='text'
-                    name='serviceName'
-                    value={formData.professionalDetails.serviceName}
+                    name='organizationName'
+                    value={formData.professionalDetails.organizationName}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
                     />
                     </div>
                     <div>
-                    <label htmlFor="serviceAddress">Organization Address</label>
+                    <label htmlFor="organizationAddress">Organization Address</label>
                     <input
                     type='text'
-                    name='serviceAddress'
-                    value={formData.professionalDetails.serviceAddress}
+                    name='organizationAddress'
+                    value={formData.professionalDetails.organizationAddress}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
                     />
                     </div>
                     <div>
-                    <label htmlFor="serviceDesignation">Designation</label>
+                    <label htmlFor="Designation">Designation</label>
                     <input
                     type='text'
-                    name='serviceDesignation'
-                    value={formData.professionalDetails.serviceDesignation}
+                    name='Designation'
+                    value={formData.professionalDetails.Designation}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
                     />
                     </div>
                     <div>
-                    <label htmlFor="serviceSalary">Salary</label>
+                    <label htmlFor="Salary">Salary</label>
                     <input
                     type='text'
-                    name='serviceSalary'
-                    value={formData.professionalDetails.serviceSalary}
+                    name='Salary'
+                    value={formData.professionalDetails.Salary}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
                     />
@@ -610,44 +567,57 @@ function Form() {
                 <p className='mt-5 font-bold text-xl'>Education Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
-                    <label htmlFor="educationType">Education Type</label>
-                    <input
-                    type='text'
+                    <label htmlFor="educationType">Education Type <span className='text-red-600'>*</span></label>
+                    <select
                     name='educationType'
                     value={formData.educationDetails.educationType}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
-                    />
+                    >
+                    <option value="">Select</option>
+                    {[
+                    '10th',
+                    '12th',
+                    'Diploma',
+                    'Graduation',
+                    'Post-Graduation',
+                    'PhD'
+                    ].map((education) => (
+                    <option key={education} value={education}>
+                        {education}
+                    </option>
+                    ))}
+                    </select>  
                     </div>
 
                     <div>
-                    <label htmlFor="graduationCollegeName">College Name</label>
+                    <label htmlFor="CollegeName">Institute Name</label>
                     <input
                     type='text'
-                    name='graduationCollegeName'
-                    value={formData.educationDetails.graduationCollegeName}
+                    name='CollegeName'
+                    value={formData.educationDetails.CollegeName}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
                     />
                     </div>
 
                     <div>
-                    <label htmlFor="graduationCourseName">Course Name</label>
+                    <label htmlFor="CourseName">Course Name</label>
                     <input
                     type='text'
-                    name='graduationCourseName'
-                    value={formData.educationDetails.graduationCourseName}
+                    name='CourseName'
+                    value={formData.educationDetails.CourseName}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
                     />
                     </div>
 
                     <div>
-                    <label htmlFor="graduationMarks">Marks</label>
+                    <label htmlFor="Marks">Marks</label>
                     <input
                     type='text'
-                    name='graduationMarks'
-                    value={formData.educationDetails.graduationMarks}
+                    name='Marks'
+                    value={formData.educationDetails.Marks}
                     onChange={handleChange}
                     className='border rounded w-full h-10'
                     />
@@ -658,7 +628,7 @@ function Form() {
                 <p className='mt-5 font-bold text-xl'>Father Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                 <div>
-                    <label htmlFor="fatherFirstName">First Name</label>
+                    <label htmlFor="fatherFirstName">First Name <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='fatherFirstName'
@@ -680,7 +650,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="fatherLastName">Last Name</label>
+                    <label htmlFor="fatherLastName">Last Name <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='fatherLastName'
@@ -691,7 +661,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="fatherStatus">Status</label>
+                    <label htmlFor="fatherStatus">Status <span className='text-red-600'>*</span></label>
                     <select
                     name='fatherStatus'
                     value={formData.fatherDetails.fatherStatus}
@@ -735,7 +705,7 @@ function Form() {
                 <p className='mt-5 font-bold text-xl'>Mother Details</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                 <div>
-                    <label htmlFor="motherFirstName">First Name</label>
+                    <label htmlFor="motherFirstName">First Name <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='motherFirstName'
@@ -746,7 +716,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="motherLastName">Last Name</label>
+                    <label htmlFor="motherLastName">Last Name <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='motherLastName'
@@ -757,7 +727,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="motherStatus">Status</label>
+                    <label htmlFor="motherStatus">Status <span className='text-red-600'>*</span></label>
                     <select
                     name='motherStatus'
                     value={formData.motherDetails.motherStatus}
@@ -802,7 +772,7 @@ function Form() {
                 <p className='mt-5 font-bold text-xl'>Maternal Surname</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                 <div>
-                    <label htmlFor="surName">Surname</label>
+                    <label htmlFor="surName">Surname <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='surName'
@@ -850,78 +820,6 @@ function Form() {
                     </div>
                 </div>
                 <hr />
-
-                {/* <p className='mt-5'>Elder Sibling</p>
-                <div className='grid grid-cols-3 gap-5 my-5'>
-                    <div>
-                    <label htmlFor="elderSiblingOneFirstName">First Name</label>
-                    <input
-                    type='text'
-                    name='elderSiblingOneFirstName'
-                    value={formData.elderSiblings.elderSiblingOne.elderSiblingOneFirstName}
-                    onChange={handleChange}
-                    className='border rounded w-full h-10'
-                    />
-                    </div>
-
-                    <div>
-                    <label htmlFor="elderSiblingOneLastName">Last Name</label>
-                    <input
-                    type='text'
-                    name='elderSiblingOneLastName'
-                    value={formData.elderSiblings.elderSiblingOne.elderSiblingOneLastName}
-                    onChange={handleChange}
-                    className='border rounded w-full h-10'
-                    />
-                    </div>
-
-                    <div>
-                    <label htmlFor="elderSiblingOneMaritalStatus">Marital Status</label>
-                    <input
-                    type='text'
-                    name='elderSiblingOneMaritalStatus'
-                    value={formData.elderSiblings.elderSiblingOne.elderSiblingOneMaritalStatus}
-                    onChange={handleChange}
-                    className='border rounded w-full h-10'
-                    />
-                    </div>
-                </div>
-                <hr />
-
-                <p className='mt-5'>younger Sibling</p>
-                <div className='grid grid-cols-3 gap-5 my-5'>
-                    <div>
-                    <label htmlFor="youngerSiblingOneFirstName">First Name</label>
-                    <input
-                    type='text'
-                    name='youngerSiblingOneFirstName'
-                    value={formData.youngerSiblings.youngerSiblingOne.youngerSiblingOneFirstName}
-                    onChange={handleChange}
-                    className='border rounded w-full h-10'
-                    />
-                    </div>
-                    <div>
-                    <label htmlFor="youngerSiblingOneLastName">Last Name</label>
-                    <input
-                    type='text'
-                    name='youngerSiblingOneLastName'
-                    value={formData.youngerSiblings.youngerSiblingOne.youngerSiblingOneLastName}
-                    onChange={handleChange}
-                    className='border rounded w-full h-10'
-                    />
-                    </div>
-                    <div>
-                    <label htmlFor="youngerSiblingOneMaritalStatus">Marital Status</label>
-                    <input
-                    type='text'
-                    name='youngerSiblingOneMaritalStatus'
-                    value={formData.youngerSiblings.youngerSiblingOne.youngerSiblingOneMaritalStatus}
-                    onChange={handleChange}
-                    className='border rounded w-full h-10'
-                    />
-                    </div>
-                </div>
-                <hr /> */}
 
                 <p className='mt-5 font-bold text-xl'>Spouse Preference</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
@@ -1031,7 +929,7 @@ function Form() {
                 <p className='mt-5 font-bold text-xl'>Contact Information</p>
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div>
-                    <label htmlFor="country">Country</label>
+                    <label htmlFor="country">Country <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='country'
@@ -1042,7 +940,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="state">State</label>
+                    <label htmlFor="state">State <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='state'
@@ -1053,7 +951,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="city">City</label>
+                    <label htmlFor="city">City <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='city'
@@ -1075,7 +973,7 @@ function Form() {
                     </div>
 
                     <div>
-                    <label htmlFor="pin">Pin</label>
+                    <label htmlFor="pin">Pin <span className='text-red-600'>*</span></label>
                     <input
                     type='text'
                     name='pin'

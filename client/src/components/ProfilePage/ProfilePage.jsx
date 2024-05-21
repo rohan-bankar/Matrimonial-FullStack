@@ -24,9 +24,8 @@ const ProfilePage = () => {
     }, []);
 
     return (
-        <div className='h-screen'>
+        <div>
             {data ? <Profile data={data} /> : <p>Fill Form.....</p>}
-            <button type='button' onClick={()=>navigate('/form')}>Click here</button>
         </div>
     );
 };

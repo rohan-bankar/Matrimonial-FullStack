@@ -51,7 +51,7 @@ const SignUp = () => {
             <div className='flex w-11/12'>
               <div>
                 <label htmlFor="firstName" className='text-white'>
-                  <strong>First Name</strong>
+                  <strong>First Name <span className='text-red-600'>*</span></strong>
                 </label><br />
                 <input
                   type="text"
@@ -63,7 +63,7 @@ const SignUp = () => {
               </div>
               <div className='ml-5'>
                 <label htmlFor="lastName" className='text-white'>
-                  <strong>Last Name</strong>
+                  <strong>Last Name <span className='text-red-600'>*</span></strong>
                 </label><br />
                 <input
                   type="text"
@@ -76,7 +76,7 @@ const SignUp = () => {
             </div>
             <div>
               <label htmlFor="email" className='text-white'>
-                <strong>Email</strong>
+                <strong>Email <span className='text-red-600'>*</span></strong>
               </label><br />
               <input
                 type="text"
@@ -88,7 +88,7 @@ const SignUp = () => {
             </div>
             <div>
               <label htmlFor="password" className='text-white'>
-                <strong>Password</strong>
+                <strong>Password <span className='text-red-600'>*</span></strong>
               </label><br />
               <input
                 type="password"
@@ -100,7 +100,7 @@ const SignUp = () => {
             </div>
             <div>
               <label htmlFor="avatar" className='text-white'>
-                <strong>Profile</strong>
+                <strong>Profile <span className='text-red-600'>*</span></strong>
               </label><br />
               <input
                 type="file"

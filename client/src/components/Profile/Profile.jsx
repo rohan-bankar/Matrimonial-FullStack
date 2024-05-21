@@ -111,19 +111,19 @@ const Profile = ({ data }) => {
                         </div>
                         <div>
                             <p className='title'>Organization Name</p>
-                            <p className='data'>{data.professionalDetails.serviceName}</p>
+                            <p className='data'>{data.professionalDetails.organizationName}</p>
                         </div>
                         <div>
                             <p className='title'>Organization Address</p>
-                            <p className='data'>{data.professionalDetails.serviceAddress}</p>
+                            <p className='data'>{data.professionalDetails.organizationAddress}</p>
                         </div>
                         <div>
                             <p className='title'>Designation</p>
-                            <p className='data'>{data.professionalDetails.serviceDesignation}</p>
+                            <p className='data'>{data.professionalDetails.Designation}</p>
                         </div>
                         <div>
                             <p className='title'>Salary</p>
-                            <p className='data'>{data.professionalDetails.serviceSalary}</p>
+                            <p className='data'>{data.professionalDetails.Salary}</p>
                         </div>
                     </div>
                     <hr/>
@@ -136,15 +136,15 @@ const Profile = ({ data }) => {
                         </div>
                         <div>
                             <p className='title'>College Name</p>
-                            <p className='data'>{data.educationDetails.graduationCollegeName}</p>
+                            <p className='data'>{data.educationDetails.CollegeName}</p>
                         </div>
                         <div>
                             <p className='title'>Course Name</p>
-                            <p className='data'>{data.educationDetails.graduationCourseName}</p>
+                            <p className='data'>{data.educationDetails.CourseName}</p>
                         </div>
                         <div>
                             <p className='title'>Marks</p>
-                            <p className='data'>{data.educationDetails.graduationMarks}</p>
+                            <p className='data'>{data.educationDetails.Marks}</p>
                         </div>
                     </div>
                     <h/>
