@@ -36,6 +36,10 @@ const userSchema = new Schema(
             required:true,
             default:0
         },
+        avatar:{
+            type:String,
+            required:true
+        },
         refreshToken:{
             type:String
         },

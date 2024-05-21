@@ -30,13 +30,13 @@ const formSchema = new Schema(
             cast: { type: String, 
                         required: true },
             figure:{type:String,
-                    enum:['Average','Athletic','Slim','Fit','Muscular','Curvy','Slightly Overweight']},
+                    enum:['Average','Athletic','Slim','Fit','Muscular','Curvy','Slightly Overweight','']},
             weight: { type: Number, 
                       required: true },
             height: { type: Number,
                           required: true },
             complexion:{type:String,
-                        enum:['Very Dark','Dark','Whitish','Fair','Very Fair']},
+                        enum:['Very Dark','Dark','Whitish','Fair','Very Fair','']},
             bloodGroup: { type: String, 
                           required: true,
                           enum:['A+','A','B+','B','O+','O','AB+','AB'] },
@@ -173,7 +173,7 @@ const formSchema = new Schema(
             fatherStatus: { type: String, required: true ,enum: ['alive', 'expired']}, // "alive" or "expired"
             fatherContact: {type: Number}, 
             fatherProfession:{type:String,
-                        enum:['Service','Business','Retired'],},
+                        enum:['Service','Business','Retired',''],},
             fatherAliveFields:{
                         contact: { type: String },
                         profession: { type: String, enum: ['Service', 'Business', 'Retired'] }
@@ -186,7 +186,7 @@ const formSchema = new Schema(
                      // "alive" or "expired"
             motherContact: {type: Number},
             motherProfession: {type:String,
-                        enum:['Service','Business','Retired','House Wife'],},
+                        enum:['Service','Business','Retired','House Wife',''],},
             motherAliveFields: {
                           contact: { type: String },
                           profession: { type: String, enum: ['Service', 'Business', 'Retired', 'House Wife'] }
@@ -251,7 +251,7 @@ const formSchema = new Schema(
           otherDetails: {
             aboutSelf:{type: String},
             foodPreference:{type: String,
-                            enum:['Pure Veg','Mostly Veg','Veg & Non-veg','Mostly Non-veg','Pure Non-veg']},
+                            enum:['Pure Veg','Mostly Veg','Veg & Non-veg','Mostly Non-veg','Pure Non-veg','']},
           },
           contactInformation: {
             country: { type: String, required: true },

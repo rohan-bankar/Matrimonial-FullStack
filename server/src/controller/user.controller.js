@@ -6,6 +6,7 @@ import  Jwt  from "jsonwebtoken";
 import mongoose from "mongoose";
 import nodemailer from "nodemailer";
 import randomstring from "randomstring";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { updateFormFieldsContactInformation } from "./form.controller.js";
 
 const generateAccessAndRefreshToken = async(userId)=>{
@@ -103,11 +104,19 @@ const registerUser = asyncHandler(async(req,res)=>{
             throw new ApiError(409,"User with email already exists")
         }
 
+        // check for avatar
+        let avatarLocalPath = req.files?.avatar[0]?.path
+        
+        //upload them to cloudinary
+        const avatar = await uploadOnCloudinary(avatarLocalPath)
+
+
         const user = await User.create({
             firstName,
             lastName,
             email,
             password,
+            avatar:avatar?.url,
             isAdmin:0
         })
         console.log(user);
@@ -246,6 +255,17 @@ const changePassword = asyncHandler(async(req,res)=>{
     )
 })
 
+const viewProfile = asyncHandler(async(req,res)=>{
+    const userId = req.user._id
+    const profile = await User.findById(userId)
+
+    return res
+    .status(201)
+    .json(
+        new ApiResponse(200,profile,"User profile view successfully.")
+    )
+})
+
 const loginAdmin = asyncHandler(async(req,res)=>{
     const{email,password} = req.body;
     if(!email){
@@ -374,5 +394,6 @@ export{
     loginAdmin,
     logoutAdmin,
     forgetPasswordEmail,
-    resetPassword
+    resetPassword,
+    viewProfile
 }
