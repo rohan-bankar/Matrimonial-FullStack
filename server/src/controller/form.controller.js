@@ -53,36 +53,16 @@ const userInfo = asyncHandler(async(req,res)=>{
     },
     professionalDetails:{
         professionType,
-        serviceName,
-        serviceAddress,
-        serviceDesignation,
-        serviceSalary,
-        businessName,
-        businessAddress,
-        businessDesignation,
-        businessIncome
+        organizationName,
+        organizationAddress,
+        Designation,
+        Salary,
     },
     educationDetails:{
         educationType,
-        tenthSchoolName,
-        tenthMarks,
-        diplomaCollegeName,
-        diplomaCourseName,
-        diplomaMarks,
-        twelfthCollegeName,
-        twelfthCourseName,
-        twelfthMarks,
-        graduationCollegeName,
-        graduationCourseName,
-        graduationMarks,
-        postGraduationCollegeName,
-        postGraduationCourseName,
-        postGraduationSpecialization,
-        postGraduationMarks,
-        phdCollegeName,
-        phdCourseName,
-        phdSpecialization,
-        phdMarks
+        CollegeName,
+        CourseName,
+        Marks,
     },
     fatherDetails:{
         fatherFirstName,
@@ -108,40 +88,6 @@ const userInfo = asyncHandler(async(req,res)=>{
             surName2,
             surName3
         },
-    // elderSiblings:{
-    //     elderSiblingOne:{
-    //         elderSiblingOneFirstName,
-    //         elderSiblingOneLastName,
-    //         elderSiblingOneMaritalStatus,
-    //     },
-    //     elderSiblingTwo:{
-    //         elderSiblingTwoFirstName,
-    //         elderSiblingTwoLastName,
-    //         elderSiblingTwoMaritalStatus,
-    //     },
-    //     elderSiblingThree:{
-    //         elderSiblingThreeFirstName,
-    //         elderSiblingThreeLastName,
-    //         elderSiblingThreeMaritalStatus,
-    //     }
-    // },
-    // youngerSiblings:{
-    //     youngerSiblingOne:{
-    //         youngerSiblingOneFirstName,
-    //         youngerSiblingOneLastName,
-    //         youngerSiblingOneMaritalStatus,
-    //     },
-    //     youngerSiblingTwo:{
-    //         youngerSiblingTwoFirstName,
-    //         youngerSiblingTwoLastName,
-    //         youngerSiblingTwoMaritalStatus,
-    //     },
-    //     youngerSiblingThree:{
-    //         youngerSiblingThreeFirstName,
-    //         youngerSiblingThreeLastName,
-    //         youngerSiblingThreeMaritalStatus,
-    //     }
-    // },
     spousePreference:{
         spouseComplexion,
         spousePhysique,
@@ -188,36 +134,16 @@ const form = await Form.create({
     },
     professionalDetails:{
         professionType,
-        serviceName,
-        serviceAddress,
-        serviceDesignation,
-        serviceSalary,
-        businessName,
-        businessAddress,
-        businessDesignation,
-        businessIncome
+        organizationName,
+        organizationAddress,
+        Designation,
+        Salary,
     },
     educationDetails:{
         educationType,
-        tenthSchoolName,
-        tenthMarks,
-        diplomaCollegeName,
-        diplomaCourseName,
-        diplomaMarks,
-        twelfthCollegeName,
-        twelfthCourseName,
-        twelfthMarks,
-        graduationCollegeName,
-        graduationCourseName,
-        graduationMarks,
-        postGraduationCollegeName,
-        postGraduationCourseName,
-        postGraduationSpecialization,
-        postGraduationMarks,
-        phdCollegeName,
-        phdCourseName,
-        phdSpecialization,
-        phdMarks
+        CollegeName,
+        CourseName,
+        Marks,
     },
     fatherDetails:{
         fatherFirstName,
@@ -243,40 +169,6 @@ const form = await Form.create({
         surName2,
         surName3
     },
-    // elderSiblings:{
-    //     elderSiblingOne:{
-    //         elderSiblingOneFirstName,
-    //         elderSiblingOneLastName,
-    //         elderSiblingOneMaritalStatus,
-    //     },
-    //     elderSiblingTwo:{
-    //         elderSiblingTwoFirstName,
-    //         elderSiblingTwoLastName,
-    //         elderSiblingTwoMaritalStatus,
-    //     },
-    //     elderSiblingThree:{
-    //         elderSiblingThreeFirstName,
-    //         elderSiblingThreeLastName,
-    //         elderSiblingThreeMaritalStatus,
-    //     }
-    // },
-    // youngerSiblings:{
-    //     youngerSiblingOne:{
-    //         youngerSiblingOneFirstName,
-    //         youngerSiblingOneLastName,
-    //         youngerSiblingOneMaritalStatus,
-    //     },
-    //     youngerSiblingTwo:{
-    //         youngerSiblingTwoFirstName,
-    //         youngerSiblingTwoLastName,
-    //         youngerSiblingTwoMaritalStatus,
-    //     },
-    //     youngerSiblingThree:{
-    //         youngerSiblingThreeFirstName,
-    //         youngerSiblingThreeLastName,
-    //         youngerSiblingThreeMaritalStatus,
-    //     }
-    // },
     spousePreference:{
         spouseComplexion,
         spousePhysique,
@@ -311,14 +203,6 @@ const viewProfile = asyncHandler(async(req,res)=>{
         {createdBy:userId}
     )
     
-    // const existedUser = await Form.findOne({
-    //     personalInformation:{firstName}
-    // }
-    // )
-    // if(existedUser){
-    //     throw new ApiError(409,"No profile found");
-    // }
-
     return res
     .status(201)
     .json(
@@ -360,72 +244,6 @@ const updateFormFieldsContactInformation = asyncHandler(async(req,res)=>{
         new ApiResponse(200,updatedForm,"Form fields updated successfully")
     )
 })
-
-// const updateFormFieldsEducationDetails = asyncHandler(async(req,res)=>{
-//     const userId = req.user._id;
-//     const cleanedBody = cleanEmptyValues(req.body);
-//     const{
-//         educationType,
-//         tenthSchoolName,
-//         tenthMarks,
-//         diplomaCollegeName,
-//         diplomaCourseName,
-//         diplomaMarks,
-//         twelfthCollegeName,
-//         twelfthCourseName,
-//         twelfthMarks,
-//         graduationCollegeName,
-//         graduationCourseName,
-//         graduationMarks,
-//         postGraduationCollegeName,
-//         postGraduationCourseName,
-//         postGraduationSpecialization,
-//         postGraduationMarks,
-//         phdCollegeName,
-//         phdCourseName,
-//         phdSpecialization,
-//         phdMarks  
-//     } = cleanedBody;
-// console.log(cleanedBody);
-//     const updatedForm = await Form.findOneAndUpdate(
-//         {createdBy:userId},
-//         {
-//             $set:{
-//                 "educationDetails.educationType": educationType, 
-//                 "educationDetails.tenthSchoolName":tenthSchoolName, 
-//                 "educationDetails.tenthMarks":tenthMarks, 
-//                 "educationDetails.diplomaCollegeName":diplomaCollegeName, 
-//                 "educationDetails.diplomaCourseName":diplomaCourseName, 
-//                 "educationDetails.diplomaMarks":diplomaMarks, 
-//                 "educationDetails.twelfthCollegeName":twelfthCollegeName, 
-//                 "educationDetails.twelfthCourseName":twelfthCourseName, 
-//                 "educationDetails.twelfthMarks":twelfthMarks, 
-//                 "educationDetails.graduationCollegeName":graduationCollegeName, 
-//                 "educationDetails.graduationCourseName":graduationCourseName, 
-//                 "educationDetails.graduationMarks":graduationMarks, 
-//                 "educationDetails.postGraduationCollegeName":postGraduationCollegeName, 
-//                 "educationDetails.postGraduationCourseName":postGraduationCourseName, 
-//                 "educationDetails.postGraduationSpecialization":postGraduationSpecialization, 
-//                 "educationDetails.postGraduationMarks":postGraduationMarks, 
-//                 "educationDetails.phdCollegeName":phdCollegeName, 
-//                 "educationDetails.phdCourseName":phdCourseName, 
-//                 "educationDetails.phdSpecialization":phdSpecialization, 
-//                 "educationDetails.phdMarks":phdMarks 
-//             },
-//         },
-//         {new:true}
-//     );
-//     // cleanEmptyValues(updatedForm)
-//     if(!updatedForm){
-//         throw new ApiError(404,"Form not found");
-//     }
-
-//     return res
-//     .status(201)
-//     .json(
-//         new ApiResponse(200,updatedForm,"Form fields updated successfully")
-//     )
-// })
 
 const filterUser = asyncHandler(async(req,res)=>{
     // const userId = req.user._id;
@@ -507,7 +325,6 @@ export{
     userInfo,
     viewProfile,
     updateFormFieldsContactInformation,
-    // updateFormFieldsEducationDetails,
     filterUser,
     searchBar,
     viewUsersProfile

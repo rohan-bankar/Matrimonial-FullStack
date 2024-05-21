@@ -134,37 +134,21 @@ const formSchema = new Schema(
             }
           },
           professionalDetails: {
-            professionType: { type: String, required: true }, // "Service" or "Business"
-            serviceName: {type: String},
-            serviceAddress:{type: String},
-            serviceDesignation: String,
-            serviceSalary: {type: String},
-            businessName: {type: String},
-            businessAddress: {type: String},
-            businessDesignation: {type: String},
-            businessIncome: {type: String},
+            professionType: { type: String,
+                             required: true,
+                             enum:['Service','Business'] }, // "Service" or "Business"
+            organizationName: {type: String},
+            organizationAddress:{type: String},
+            Designation: String,
+            Salary: {type: String},
           },
           educationDetails:{
-            educationType:{type:String,required:true},
-            tenthSchoolName:{type:String},
-            tenthMarks:{type:String},
-            diplomaCollegeName:{type:String},
-            diplomaCourseName:{type:String},
-            diplomaMarks:{type:String},
-            twelfthCollegeName:{type:String},
-            twelfthCourseName:{type:String},
-            twelfthMarks:{type:String},
-            graduationCollegeName:{type:String},
-            graduationCourseName:{type:String},
-            graduationMarks:{type:String},
-            postGraduationCollegeName:{type:String},
-            postGraduationCourseName:{type:String},
-            postGraduationSpecialization:{type:String},
-            postGraduationMarks:{type:String},
-            phdCollegeName:{type:String},
-            phdCourseName:{type:String},
-            phdSpecialization:{type:String},
-            phdMarks:{type:String}
+            educationType:{type:String,
+                          required:true,
+                          enum:['10th','12th','Diploma','Graduation','Post-Graduation','PhD']},
+            CollegeName:{type:String},
+            CourseName:{type:String},
+            Marks:{type:String},
           },
           fatherDetails: {
             fatherFirstName: { type: String, required: true },
@@ -201,46 +185,6 @@ const formSchema = new Schema(
               surName2:{type:String},
               surName3:{type:String}
             },
-          // elderSiblings: {
-          //  elderSiblingOne: {
-          //   elderSiblingOneFirstName: { type: String},
-          //   elderSiblingOneLastName: { type: String},
-          //   elderSiblingOneMaritalStatus: { type: String,
-          //                     enum:['Single','Widow','Widower','Divorce',''] },
-          //   },
-          //   elderSiblingTwo: {
-          //     elderSiblingTwoFirstName: { type: String},
-          //     elderSiblingTwoLastName: { type: String},
-          //     elderSiblingTwoMaritalStatus: { type: String,
-          //                     enum:['Single','Widow','Widower','Divorce',''] },
-          //   },
-          //   elderSiblingThree: {
-          //     elderSiblingThreeFirstName: { type: String},
-          //     elderSiblingThreeLastName: { type: String},
-          //     elderSiblingThreeMaritalStatus: { type: String,
-          //                     enum:['Single','Widow','Widower','Divorce',''] },
-          //   },
-          // },
-          // youngerSiblings: {
-          //   youngerSiblingOne:{
-          //     youngerSiblingOneFirstName: { type: String},
-          //     youngerSiblingOneLastName: { type: String},
-          //     youngerSiblingOneMaritalStatus: { type: String,
-          //                     enum:['Single','Widow','Widower','Divorce','']},
-          //   },
-          //   youngerSiblingTwo:{
-          //     youngerSiblingTwoFirstName: { type: String},
-          //     youngerSiblingTwoLastName: { type: String},
-          //     youngerSiblingTwoMaritalStatus: { type: String,
-          //                     enum:['Single','Widow','Widower','Divorce','']},
-          //   },
-          //   youngerSiblingThree:{
-          //     youngerSiblingThreeFirstName: { type: String},
-          //     youngerSiblingThreeLastName: { type: String},
-          //     youngerSiblingThreeMaritalStatus: { type: String,
-          //                     enum:['Single','Widow','Widower','Divorce','']},
-          //   }
-          // },
           spousePreference: {
             spouseComplexion: {type: String,
                         enum:['Very Dark','Dark','Whitish','Fair','Very Fair','']},
