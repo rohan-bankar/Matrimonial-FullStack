@@ -10,13 +10,13 @@ const Login = () => {
     e.preventDefault()
     axios.post('/api/v1/users/login',{email,password})
     .then((result)=>{
-      console.log(result);
+      // console.log(result);
       const {accessToken,refreshToken} = result.data.data;
       localStorage.clear()
       localStorage.setItem('accessToken',accessToken)
-      console.log(accessToken);
+      // console.log(accessToken);
       localStorage.setItem('refreshToken',refreshToken)
-      console.log(refreshToken);
+      // console.log(refreshToken);
       navigate('/home')
     })
     .catch(error=>{console.log(error);

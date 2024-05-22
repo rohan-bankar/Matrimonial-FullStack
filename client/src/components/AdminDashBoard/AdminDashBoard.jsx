@@ -16,9 +16,18 @@ function AdminDashBoard() {
   const [isModalOpen,setIsModalOpen] = useState(false)
   const navigate = useNavigate()
   const [isMenuOpen,setIsMenuOpen] = useState(false)
+  const [showNote,setShowNote] = useState(false)
 
   const toggleMenu = ()=>{
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const handleMouseEnter = ()=>{
+    setShowNote(true)
+  }
+
+  const handleMouseExit = ()=>{
+    setShowNote(false)
   }
 
   const getAccessToken = ()=>{
@@ -42,31 +51,6 @@ function AdminDashBoard() {
     })
   }
 
-  // const handleSearch =  async (e)=>{
-  //   e.preventDefault()
-  //   setError('')
-  //   setProfiles([])
-
-  //   try {
-  //     const accessToken = getAccessToken()
-  //     let response
-      
-  //     if(name){
-  //       response = await axios.post('/api/v1/form/searchBar',{
-  //         name
-  //       },{
-  //         headers:{
-  //           Authorization:`Bearer ${accessToken}`
-  //         }
-  //       })
-  //     }
-  //     setProfiles(response.data.data)
-  //   } catch (error) {
-  //     setError('No profile found or an error occurred')
-  //     console.error('Error searching profiles:', error)
-  //   }
-  // }
-
   const handleViewProfile = async (userId) => {
     try {
         const accessToken = getAccessToken();
@@ -75,7 +59,7 @@ function AdminDashBoard() {
                 Authorization: `Bearer ${accessToken}`
             }
         });
-        console.log("Profile data:",response.data.data);
+        // console.log("Profile data:",response.data.data);
         setSelectedProfile(response.data.data);
         setIsModalOpen(true);
     } catch (error) {
@@ -125,29 +109,22 @@ useEffect(()=>{
 
   return (
     <div className='bg-orange-200 h-screen relative'>
-      <div className='w-44 text-center absolute top-5 right-10'>
+      <div className='w-44 text-center absolute top-5 right-5'>
       <FontAwesomeIcon className='cursor-pointer' icon="fa-regular fa-circle-user" size="2xl" onClick={toggleMenu} />
         <div className={`w-44 p-3 border-2 border-black rounded-md font-bold bg-white mt-1 ${isMenuOpen ? 'block' : 'hidden'}`}>
         <button onClick={handleLogout}>Logout</button><br />
         <button onClick={()=>navigate('/change-password')}>Change Password</button>
         </div>
       </div>
-        <button className='border-orange-300 p-2 rounded-full' style={{color:'orange'}}  onClick={()=>navigate('/search')}><FontAwesomeIcon icon="fa-solid fa-magnifying-glass" size="2xl" /></button>
-        {/* <form onSubmit={handleSearch}>
-            <div>
-              <input type="text" 
-              id='name'
-              value={name}
-              onChange={(e)=> setName(e.target.value)}
-              className='border-2 border-black w-3/6 p-3 rounded-full absolute top-36 right-1/4 bg-orange-200'
-              />
-            </div>
-            <button className='absolute top-36 right-64 p-3 bg-orange-300 rounded-md text-white font-bold' type='submit'>Search</button>
-        </form> */}
+      <div onMouseEnter={handleMouseEnter} 
+           onMouseLeave={handleMouseExit}>
+        <button className=' border-2  border-orange-300 p-2 rounded-full absolute left-10 top-5 ' style={{color:'orange'}}  onClick={()=>navigate('/search')}><FontAwesomeIcon icon="fa-solid fa-magnifying-glass" size="2xl" /></button>
+        {showNote && <div className='absolute top-20 left-8 border border-black bg-white font-bold p-1 rounded-md'>Search</div>}
+      </div>
         {error && <p>{error}</p>}
 
             {viewUser.length > 0 && (
-                <div className='w-9/12 mx-auto top-28 bg-white rounded-md '>
+                <div className='w-9/12 mx-auto absolute top-20 left-36 bg-white rounded-md '>
                   <div className='grid grid-cols-6 mx-5 p-3 text-center font-bold'>
                     <div>Name</div>
                     <div>Religion</div>

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Profile from '../Profile/Profile.jsx';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+library.add(faXmark)
 const SearchProfile = () => {
     const [name, setName] = useState('');
     const [profiles, setProfiles] = useState([]);
@@ -14,6 +17,10 @@ const SearchProfile = () => {
 
     const getAccessToken = () => {
         return localStorage.getItem('accessToken');
+    };
+
+    const handleRemoveProfile = (index) => {
+        setProfiles((prevProfiles) => prevProfiles.filter((_, i) => i !== index));
     };
 
     const handleSearch = async (e) => {
@@ -64,7 +71,7 @@ const SearchProfile = () => {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-            console.log("Profile data:",response.data.data);
+            // console.log("Profile data:",response.data.data);
             setSelectedProfile(response.data.data);
             setIsModalOpen(true);
         } catch (error) {
@@ -139,19 +146,22 @@ const SearchProfile = () => {
             <button className='absolute top-36 right-64 p-3 bg-orange-300 rounded-md text-white font-bold' type="submit">Search</button>
         </form>
 
-        {error && <p>{error}</p>}
+        {error && <p className='absolute top-1/3 left-1/3'>{error}</p>}
 
         {profiles.length > 0 && (
             <div className='w-3/6 mx-auto absolute right-1/4 top-52 bg-white rounded-md '>
             <ul>
                 {profiles.map((profile, index) => (
                 <li className='border border-b-black' key={index}>
-                    <div className='flex mx-5 p-3 space-x-2'>
+                    <div className='grid grid-cols-3 p-3 space-x-2'>
                     <div>
                         <p>{profile.personalInformation.firstName} {profile.personalInformation.lastName}</p>
                     </div>
                     <div>
                         <button onClick={() => handleViewProfile(profile._id)}>View Profile</button>
+                    </div>
+                    <div>
+                        <FontAwesomeIcon onClick={()=>handleRemoveProfile(index)} className=' cursor-pointer hover:bg-gray-200 rounded-full p-1' icon="fa-solid fa-xmark" size="xl" />
                     </div>
                     </div>
                 </li>
@@ -159,7 +169,6 @@ const SearchProfile = () => {
             </ul>
             </div>
         )}
-
         {isModalOpen && selectedProfile && (
              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
              <div className="bg-orange-100  p-5 rounded-lg shadow-lg relative  max-h-full overflow-y-auto w-3/4">

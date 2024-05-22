@@ -22,7 +22,7 @@ const SignUp = () => {
 
     axios.post('/api/v1/users/register', formData)
       .then(result => {
-        console.log(result)
+        // console.log(result)
         showMessage(result.data.message)
         // Navigate to another page or take another action after successful registration
       })

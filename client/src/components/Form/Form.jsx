@@ -142,7 +142,7 @@ function Form() {
                     Authorization:`Bearer ${accessToken}`
                 }
             });
-            console.log(response.data);
+            // console.log(response.data);
             navigate('/home')
         } catch (error) {
             console.error('Error saving user info:',error)

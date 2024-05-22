@@ -42,7 +42,7 @@ const Home = () => {
       const handleLogout = (e) =>{
         e.preventDefault()
         const accessToken = getAccessToken();
-        console.log(`accessToken:${accessToken}`);
+        // console.log(`accessToken:${accessToken}`);
         axios.post('/api/v1/users/logout', {}, {
         headers: {
             Authorization: `Bearer ${accessToken}`
@@ -50,7 +50,7 @@ const Home = () => {
     })
     
         .then(result =>{
-          console.log(result);
+          // console.log(result);
           localStorage.removeItem('accessToken')
           navigate('/login')
         })
