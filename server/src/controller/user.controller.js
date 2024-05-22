@@ -119,12 +119,12 @@ const registerUser = asyncHandler(async(req,res)=>{
             avatar:avatar?.url,
             isAdmin:0
         })
-        console.log(user);
+        // console.log(user);
 
         const createdUser = await User.findById(user._id).select(
             "-password -refreshToken"
         )
-        console.log(createdUser);
+        // console.log(createdUser);
         await sendVerificationEmail(req.body.firstName,req.body.email,createdUser._id);
 
         if(!createdUser){
@@ -353,7 +353,7 @@ const forgetPasswordEmail = asyncHandler(async(req,res)=>{
         sendVerificationEmailForPassword(userData.firstName,userData.email,randomString)
     }
 
-    console.log(`token:${userData.token}`);
+    // console.log(`token:${userData.token}`);
     if(!userData){
        throw new ApiError(404,"user email is incorrect")
     }
@@ -378,7 +378,7 @@ const resetPassword = asyncHandler(async(req,res)=>{
     userData.password = password
     userData.token = ''
     await userData.save({validateBeforeSave:false});
-     console.log(`new password:${userData.password}`);
+    //  console.log(`new password:${userData.password}`);
     return res
     .status(201)
     .json(

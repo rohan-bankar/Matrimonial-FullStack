@@ -105,7 +105,7 @@ const userInfo = asyncHandler(async(req,res)=>{
         pin
     }
 } = cleanedBody;
-console.log(cleanedBody);
+// console.log(cleanedBody);
 const userId = req.user._id;
 const form = await Form.create({
     personalInformation:{
@@ -187,7 +187,7 @@ const form = await Form.create({
     },
     createdBy:userId
 })
-console.log(form);
+// console.log(form);
 if(!form){
     throw new ApiError(500,"something went wrong");
 }
@@ -309,7 +309,7 @@ const searchBar = asyncHandler(async(req,res)=>{
 
 const viewUsersProfile = asyncHandler(async(req,res)=>{
     const userId = req.params.userId
-    console.log(userId);
+    // console.log(userId);
     const profile = await Form.findById(userId)
     if(!profile){
         throw new ApiError(404,'profile not found')
