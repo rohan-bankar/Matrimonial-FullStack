@@ -13,7 +13,7 @@ const ResetPasswordForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`/api/v1/users/reset-password/${token}`, { password });
+      const response = await axios.post(`https://matrimonial-server.onrender.com/api/v1/users/reset-password/${token}`, { password });
       setMessage(response.data.message);
       setError('');
       setTimeout(() => {

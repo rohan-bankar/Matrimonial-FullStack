@@ -11,7 +11,7 @@ const ForgetPasswordForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/api/v1/users/forget-password', { email });
+      const response = await axios.post('https://matrimonial-server.onrender.com/api/v1/users/forget-password', { email });
       setMessage(response.data.message);
       setError('');
     } catch (err) {

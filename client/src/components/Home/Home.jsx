@@ -20,7 +20,7 @@ const Home = () => {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem('accessToken');
-                const response = await axios.get('/api/v1/users/profile', {
+                const response = await axios.get('https://matrimonial-server.onrender.com/api/v1/users/profile', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -43,7 +43,7 @@ const Home = () => {
         e.preventDefault()
         const accessToken = getAccessToken();
         // console.log(`accessToken:${accessToken}`);
-        axios.post('/api/v1/users/logout', {}, {
+        axios.post('https://matrimonial-server.onrender.com/api/v1/users/logout', {}, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }

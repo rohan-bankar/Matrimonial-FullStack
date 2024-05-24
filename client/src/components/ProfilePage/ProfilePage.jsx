@@ -9,7 +9,7 @@ const ProfilePage = () => {
         const fetchData = async () => {
             try {
                 const accessToken = localStorage.getItem('accessToken');
-                const response = await axios.get('/api/v1/form/profile', {
+                const response = await axios.get('https://matrimonial-server.onrender.com/api/v1/form/profile', {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },

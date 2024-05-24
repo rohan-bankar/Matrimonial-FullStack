@@ -8,7 +8,7 @@ const EmailVerify = () => {
   const navigate = useNavigate()
 
   const verifyEmail = () => {
-    axios.get(`/api/v1/users/verify-email/${userId}`)
+    axios.get(`https://matrimonial-server.onrender.com/api/v1/users/verify-email/${userId}`)
       .then(response => {
         setVerificationStatus(response.data.message);
       })

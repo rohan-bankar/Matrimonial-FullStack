@@ -34,7 +34,7 @@ const SearchProfile = () => {
             
             if (name) {
                 
-                response = await axios.post('/api/v1/form/searchBar', {
+                response = await axios.post('https://matrimonial-server.onrender.com/api/v1/form/searchBar', {
                     name
                 }, {
                     headers: {
@@ -47,7 +47,7 @@ const SearchProfile = () => {
                 });
             } else {
                 
-                response = await axios.post('/api/v1/form/filter-profiles', {
+                response = await axios.post('https://matrimonial-server.onrender.com/api/v1/form/filter-profiles', {
                     personalInformation: { cast, gender, maritalStatus }
                 }, {
                     headers: {
@@ -66,7 +66,7 @@ const SearchProfile = () => {
     const handleViewProfile = async (userId) => {
         try {
             const accessToken = getAccessToken();
-            const response = await axios.get(`/api/v1/form/users-profile/${userId}`, {
+            const response = await axios.get(`https://matrimonial-server.onrender.com/api/v1/form/users-profile/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
