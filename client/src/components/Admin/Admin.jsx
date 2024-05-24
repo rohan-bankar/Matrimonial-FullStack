@@ -8,7 +8,7 @@ const Admin = () => {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    axios.post('api/v1/users/admin-login',{email,password})
+    axios.post('https://matrimonial-server.onrender.com/api/v1/users/admin-login',{email,password})
     .then((result)=>{
       const {accessToken,refreshToken} =result.data.data
       localStorage.clear()

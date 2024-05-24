@@ -37,7 +37,7 @@ function AdminDashBoard() {
   const handleLogout = (e)=>{
     e.preventDefault()
     const accessToken = getAccessToken()
-    axios.post('/api/v1/users/admin-logout',{},{
+    axios.post('https://matrimonial-server.onrender.com/api/v1/users/admin-logout',{},{
       headers:{
         Authorization:`Bearer ${accessToken}`
       }
@@ -54,7 +54,7 @@ function AdminDashBoard() {
   const handleViewProfile = async (userId) => {
     try {
         const accessToken = getAccessToken();
-        const response = await axios.get(`/api/v1/form/users-profile/${userId}`, {
+        const response = await axios.get(`https://matrimonial-server.onrender.com/api/v1/form/users-profile/${userId}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }
@@ -72,7 +72,7 @@ const handleDeleteInfo = async (userId)=>{
   try {
     setError('')
     const accessToken = getAccessToken();
-    await axios.delete(`api/v1/admin/delete-data/${userId}`,{
+    await axios.delete(`https://matrimonial-server.onrender.com/api/v1/admin/delete-data/${userId}`,{
       headers:{
         Authorization:`Bearer ${accessToken}`
       }
@@ -93,7 +93,7 @@ useEffect(()=>{
   const fetchProfiles = async () =>{
     try {
       const accessToken = getAccessToken()
-      const response = await axios.get('api/v1/admin/view-profile',{
+      const response = await axios.get('https://matrimonial-server.onrender.com/api/v1/admin/view-profile',{
         headers:{
           Authorization:`Bearer ${accessToken}`
         }
