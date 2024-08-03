@@ -13,7 +13,7 @@ const ChangePassword = () => {
             if(!accessToken){
                 throw new error('Access token not found')
             }
-            const response = await axios.post('https://matrimonial-server.onrender.com/api/v1/users/change-password',{oldPassword,newPassword},
+            const response = await axios.post('/api/v1/users/change-password',{oldPassword,newPassword},
             {
                 headers:{
                     Authorization:`Bearer ${accessToken}`

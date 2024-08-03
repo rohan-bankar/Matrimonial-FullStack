@@ -20,7 +20,7 @@ const SignUp = () => {
     formData.append('password', password)
     formData.append('avatar', avatar)
 
-    axios.post('https://matrimonial-server.onrender.com/api/v1/users/register', formData)
+    axios.post('/api/v1/users/register', formData)
       .then(result => {
         // console.log(result)
         showMessage(result.data.message)

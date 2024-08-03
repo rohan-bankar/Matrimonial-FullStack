@@ -2,6 +2,7 @@ import { Form } from "../models/form.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
+import { FriendRequest } from "../models/friendRequest.model.js";
 import mongoose from "mongoose";
 
 
@@ -307,20 +308,44 @@ const searchBar = asyncHandler(async(req,res)=>{
     )
 })
 
-const viewUsersProfile = asyncHandler(async(req,res)=>{
-    const userId = req.params.userId
-    // console.log(userId);
-    const profile = await Form.findById(userId)
-    if(!profile){
-        throw new ApiError(404,'profile not found')
+const viewUsersProfile = asyncHandler(async (req, res) => {
+    const userId = req.params.userId; 
+    const currentUserId = req.user.id;  
+
+    const friendRequest = await FriendRequest.findOne({ 
+        $or: [
+            { from: currentUserId, to: userId },
+            { from: userId, to: currentUserId }
+        ]
+    });
+
+    const profile = await Form.findOne({ createdBy: userId });
+    if (!profile) {
+        throw new ApiError(404, 'Profile not found');
     }
 
-    return res
-    .status(201)
-    .json(
-        new ApiResponse(200,profile,'profile view successfully')
-    )
-})
+    if (!friendRequest || friendRequest.status === 'pending' || friendRequest.status === 'declined') {
+        const limitedProfile = {
+            personalInformation:{
+                firstName: profile.personalInformation.firstName,
+                middleName:profile.personalInformation.middleName,
+                lastName:profile.personalInformation.lastName,
+                cast: profile.personalInformation.cast,
+                religion: profile.personalInformation.religion,
+                maritalStatus:profile.personalInformation.maritalStatus,
+            }
+            };
+
+        return res.status(200).json(
+            new ApiResponse(200, limitedProfile, 'Limited profile view')
+        );
+    }
+
+    return res.status(200).json(
+        new ApiResponse(200, profile, 'Full profile view')
+    );
+});
+
 export{
     userInfo,
     viewProfile,

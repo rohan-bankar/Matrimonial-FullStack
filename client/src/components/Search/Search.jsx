@@ -34,7 +34,7 @@ const SearchProfile = () => {
             
             if (name) {
                 
-                response = await axios.post('https://matrimonial-server.onrender.com/api/v1/form/searchBar', {
+                response = await axios.post('/api/v1/form/searchBar', {
                     name
                 }, {
                     headers: {
@@ -47,7 +47,7 @@ const SearchProfile = () => {
                 });
             } else {
                 
-                response = await axios.post('https://matrimonial-server.onrender.com/api/v1/form/filter-profiles', {
+                response = await axios.post('/api/v1/form/filter-profiles', {
                     personalInformation: { cast, gender, maritalStatus }
                 }, {
                     headers: {
@@ -64,14 +64,15 @@ const SearchProfile = () => {
     };
 
     const handleViewProfile = async (userId) => {
+        console.log(`fetching profile for user Id:${userId}`);
         try {
             const accessToken = getAccessToken();
-            const response = await axios.get(`https://matrimonial-server.onrender.com/api/v1/form/users-profile/${userId}`, {
+            const response = await axios.get(`/api/v1/form/users-profile/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-            // console.log("Profile data:",response.data.data);
+            console.log("Profile data:",response.data.data);
             setSelectedProfile(response.data.data);
             setIsModalOpen(true);
         } catch (error) {
@@ -158,7 +159,7 @@ const SearchProfile = () => {
                         <p>{profile.personalInformation.firstName} {profile.personalInformation.lastName}</p>
                     </div>
                     <div>
-                        <button onClick={() => handleViewProfile(profile._id)}>View Profile</button>
+                        <button onClick={() => handleViewProfile(profile.createdBy)}>View Profile</button>
                     </div>
                     <div>
                         <FontAwesomeIcon onClick={()=>handleRemoveProfile(index)} className=' cursor-pointer hover:bg-gray-200 rounded-full p-1' icon="fa-solid fa-xmark" size="xl" />

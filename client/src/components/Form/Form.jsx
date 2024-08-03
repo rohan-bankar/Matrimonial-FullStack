@@ -137,7 +137,7 @@ function Form() {
         e.preventDefault()
         const accessToken = localStorage.getItem('accessToken');
         try {
-            const response = await axios.post('https://matrimonial-server.onrender.com/api/v1/form/user-info',formData,{
+            const response = await axios.post('/api/v1/form/user-info',formData,{
                 headers:{
                     Authorization:`Bearer ${accessToken}`
                 }
