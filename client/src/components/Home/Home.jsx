@@ -78,6 +78,7 @@ const Home = () => {
             <button onClick={handleLogout}>Logout</button><br />
             <button onClick={()=>navigate('/profile')}>Profile</button><br />
             <button onClick={()=>navigate('/change-password')}>Change Password</button><br />
+            <button onClick={()=>navigate('/friendRequest')}>Requests</button>
           </div>
         </div>
 

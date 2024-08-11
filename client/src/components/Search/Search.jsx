@@ -81,6 +81,23 @@ const SearchProfile = () => {
         }
     };
 
+    const handleSendRequest = async (userId) => {
+        try {
+            const accessToken = getAccessToken();
+            const response = await axios.post('/api/v1/request/send', {
+                to: userId
+            }, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            alert(response.data.message);
+        } catch (error) {
+            setError('Error sending friend request');
+            console.error('Error sending friend request:', error);
+        }
+    };
+
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedProfile(null);
@@ -154,12 +171,15 @@ const SearchProfile = () => {
             <ul>
                 {profiles.map((profile, index) => (
                 <li className='border border-b-black' key={index}>
-                    <div className='grid grid-cols-3 p-3 space-x-2'>
+                    <div className='grid grid-cols-4 p-3 space-x-2'>
                     <div>
                         <p>{profile.personalInformation.firstName} {profile.personalInformation.lastName}</p>
                     </div>
                     <div>
                         <button onClick={() => handleViewProfile(profile.createdBy)}>View Profile</button>
+                    </div>
+                    <div>
+                        <button onClick={() => handleSendRequest(profile.createdBy)}>Send Request</button>
                     </div>
                     <div>
                         <FontAwesomeIcon onClick={()=>handleRemoveProfile(index)} className=' cursor-pointer hover:bg-gray-200 rounded-full p-1' icon="fa-solid fa-xmark" size="xl" />

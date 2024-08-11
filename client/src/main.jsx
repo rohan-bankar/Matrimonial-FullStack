@@ -16,6 +16,7 @@ import Form from './components/Form/Form.jsx'
 import Profile from './components/ProfilePage/ProfilePage.jsx'
 import Search from './components/Search/Search.jsx'
 import AdminDashBoard from './components/AdminDashBoard/AdminDashBoard.jsx'
+import FriendRequests from'./components/FriendRequests/FriendRequests.jsx'
 // import { UserProvider } from './components/UserContext/UserContext.jsx'
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout/>}>
@@ -31,6 +32,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/profile' element={<Profile/>}/>
     <Route path='/search' element={<Search/>}/>
     <Route path='/dash-board' element={<AdminDashBoard/>}/>
+    <Route path='/friendRequest' element={<FriendRequests/>}/>
   </Route>
 ))
 
